@@ -110,3 +110,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+//npx react-native run-android
