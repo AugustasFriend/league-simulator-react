@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="97.804" height="97.948" viewBox="0 0 97.804 97.948">
+  <g id="home_icon" data-name="home icon" transform="translate(-172.583 -1874.198)">
+    <path id="Path_1" data-name="Path 1" d="M242.29,1906.689H200.679a11.3,11.3,0,0,0-11.431,11.163v51.794h24.235v-24.111a4.519,4.519,0,0,1,4.572-4.465h6.859a4.52,4.52,0,0,1,4.573,4.465v24.111h24.235v-51.794A11.3,11.3,0,0,0,242.29,1906.689Z" fill="#fff" stroke="#000" stroke-width="5"/>
+    <g id="Group_2" data-name="Group 2">
+      <line id="Line_1" data-name="Line 1" x2="43.147" y2="33.488" transform="translate(221.35 1880.088)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8.395"/>
+      <g id="Group_1" data-name="Group 1">
+        <line id="Line_2" data-name="Line 2" x1="43.147" y2="33.488" transform="translate(178.472 1880.123)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8.395"/>
+        <path id="Rectangle_3" data-name="Rectangle 3" d="M7.466,0h.36a7.466,7.466,0,0,1,7.466,7.466V24.111a0,0,0,0,1,0,0H7.466A7.466,7.466,0,0,1,0,16.645V7.466A7.466,7.466,0,0,1,7.466,0Z" transform="translate(241.555 1879.899)" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
