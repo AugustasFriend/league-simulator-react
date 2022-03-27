@@ -11,9 +11,19 @@ import {
   } from 'react-native';
 
   const LeagueStandings = () =>{
-      return(
-          <Text>STANDINGS</Text>
-      )
-  }
+    return(
+        <SafeAreaView style={styles.background}>
+          <ScrollView>
+              <Text>STANDINGS</Text>
+          </ScrollView>
+        </SafeAreaView>
+    )
+}
 
+const styles = StyleSheet.create({
+    background:{
+      backgroundColor: "#433F3F",
+      flex: 1,
+    },
+})
   export default LeagueStandings;

@@ -64,7 +64,7 @@ const App: () => Node = () => {
   };
 
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.container}>
             <NavBar/>
     </NavigationContainer>
   );
@@ -86,6 +86,9 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  container:{
+    backgroundColor: '#433F3F',
   },
 });
 
