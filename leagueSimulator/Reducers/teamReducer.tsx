@@ -6,7 +6,7 @@ const initialState = {
         {name: "Abersinn FV",
         nameAbb: "AFV",
         bigIconIndex: 0,
-        wins: 4,
+        wins: 1,
         },
         {name: "Dijléon FCO",
         nameAbb: "DJL",

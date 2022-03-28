@@ -15,15 +15,26 @@ import {
   import { addVictory } from "../Actions/Actions";
   import { bindActionCreators } from 'redux';
 
+  function compare( teamA, teamB ) {
+    if (teamA.wins > teamB.wins){
+      return -1;
+    }
+    if (teamA.wins < teamB.wins){
+      return 1;
+    }
+    return 0;
+  }
+
   const LeagueStandings = ({teams}) =>{
     return(
         <SafeAreaView style={styles.background}>
           <ScrollView>
               <View>
-                {teams.map((team)=>(
+                {teams.sort(compare).map((team)=>(
                   <Text>{team.name}</Text>
                 ))}
               </View>
+              <Button title="yooo" onPress={()=> setStandings(teams)}/>
           </ScrollView>
         </SafeAreaView>
     )
