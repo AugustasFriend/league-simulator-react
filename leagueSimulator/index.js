@@ -6,11 +6,13 @@
  import App from './App';
  import { name as appName } from './app.json';
  import { Provider } from 'react-redux';
+ import { createStore } from 'redux';
  import configureStore from './Store/configureStore.tsx';
+ import allReducer from './Reducers/index.tsx';
 
 AppRegistry.registerComponent(appName, () => App);
 
-const store = configureStore()
+const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const RNRedux = () => (
   <Provider store = { store }>

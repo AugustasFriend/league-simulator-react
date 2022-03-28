@@ -12,7 +12,7 @@ import {
   } from 'react-native';
   import { TeamData } from "../JSON/TeamData";
   import { connect } from 'react-redux';
-  import { addVictory } from "../Actions/wins";
+  import { addVictory } from "../Actions/Actions";
   import { bindActionCreators } from 'redux';
 
   const images = [
@@ -21,8 +21,10 @@ import {
   ]
 
 
-  const Home = (props) =>{
+  const Home = ({wins, addVictory}) =>{
 
+    const [count, setcount] = useState(0);
+    
       return(
           <SafeAreaView style={styles.background}>
             <ScrollView>
@@ -31,8 +33,12 @@ import {
                     return(
                         <View>
                             <Text key={key}>
-                                <Text>yo</Text>
+                                <Text>{wins}</Text>
                             </Text>
+                            <Button
+                                title="win"
+                                onPress={() => addVictory()}
+                            />
                             <Image source={images[data.bigIconIndex]}/>
                         </View>
                     );
@@ -56,7 +62,19 @@ import {
       }
   })
 
-  export default (Home);
+  const mapStateToProps = (state) => {
+    return {
+      wins: state.winReducer.wins,
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        addVictory: () => dispatch(addVictory()),
+    };
+  };
+
+  export default connect(mapStateToProps,mapDispatchToProps)(Home);
 
   /*
   {TeamData.map((data,key) =>{
