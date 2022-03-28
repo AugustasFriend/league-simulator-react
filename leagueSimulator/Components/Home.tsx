@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     SafeAreaView,
     ScrollView,
@@ -8,18 +8,21 @@ import {
     useColorScheme,
     View,
     Image,
+    Button
   } from 'react-native';
-  import Col from "react-bootstrap/Col";
-  import Row from "react-bootstrap/Row";
-  import Container from "react-bootstrap/Container";
   import { TeamData } from "../JSON/TeamData";
+  import { connect } from 'react-redux';
+  import { addVictory } from "../Actions/wins";
+  import { bindActionCreators } from 'redux';
 
   const images = [
       require("../Images/abersinn-big-logo.png"),
       require("../Images/dijleon-big-logo.png")
   ]
 
-  const Home = () =>{
+
+  const Home = (props) =>{
+
       return(
           <SafeAreaView style={styles.background}>
             <ScrollView>
@@ -28,7 +31,7 @@ import {
                     return(
                         <View>
                             <Text key={key}>
-                                {data.name}
+                                <Text>yo</Text>
                             </Text>
                             <Image source={images[data.bigIconIndex]}/>
                         </View>
@@ -52,4 +55,17 @@ import {
         marginTop: "20%",
       }
   })
-  export default Home;
+
+  export default (Home);
+
+  /*
+  {TeamData.map((data,key) =>{
+                    return(
+                        <View>
+                            <Text key={key}>
+                                <Text>{wins}</Text>
+                            </Text>
+                            <Image source={images[data.bigIconIndex]}/>
+                        </View>
+                    );
+                })}*/
