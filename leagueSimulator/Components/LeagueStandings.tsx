@@ -34,7 +34,6 @@ import {
                   <Text>{team.name}</Text>
                 ))}
               </View>
-              <Button title="yooo" onPress={()=> setStandings(teams)}/>
           </ScrollView>
         </SafeAreaView>
     )
