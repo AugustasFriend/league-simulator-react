@@ -12,7 +12,7 @@
 
 AppRegistry.registerComponent(appName, () => App);
 
-const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const RNRedux = () => (
   <Provider store = { store }>

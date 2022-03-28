@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     SafeAreaView,
     ScrollView,
@@ -8,13 +8,22 @@ import {
     useColorScheme,
     View,
     Image,
+    Button
   } from 'react-native';
 
-  const LeagueStandings = () =>{
+  import { connect } from 'react-redux';
+  import { addVictory } from "../Actions/Actions";
+  import { bindActionCreators } from 'redux';
+
+  const LeagueStandings = ({teams}) =>{
     return(
         <SafeAreaView style={styles.background}>
           <ScrollView>
-              <Text>STANDINGS</Text>
+              <View>
+                {teams.map((team)=>(
+                  <Text>{team.name}</Text>
+                ))}
+              </View>
           </ScrollView>
         </SafeAreaView>
     )
@@ -25,5 +34,24 @@ const styles = StyleSheet.create({
       backgroundColor: "#433F3F",
       flex: 1,
     },
+    teamView:{
+      justifyContent: "center",
+      flexDirection: "row",
+      marginTop: "10%",
+    },
 })
-  export default LeagueStandings;
+
+const mapStateToProps = (state) => {
+  return {
+    wins: state.teamReducer.wins,
+    teams: state.teamReducer.teams,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      addVictory: () => dispatch(addVictory()),
+  };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(LeagueStandings);

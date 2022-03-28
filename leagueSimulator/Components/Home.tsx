@@ -10,7 +10,6 @@ import {
     Image,
     Button
   } from 'react-native';
-  import { TeamData } from "../JSON/TeamData";
   import { connect } from 'react-redux';
   import { addVictory } from "../Actions/Actions";
   import { bindActionCreators } from 'redux';
@@ -21,28 +20,25 @@ import {
   ]
 
 
-  const Home = ({wins, addVictory}) =>{
+  const Home = ({wins, teams, addVictory}) =>{
 
     const [count, setcount] = useState(0);
     
       return(
           <SafeAreaView style={styles.background}>
             <ScrollView>
+              <View>
                 <Text style={styles.bigtext}>Upcoming Match:</Text>
-                {TeamData.map((data,key) =>{
-                    return(
-                        <View>
-                            <Text key={key}>
-                                <Text>{wins}</Text>
-                            </Text>
-                            <Button
-                                title="win"
-                                onPress={() => addVictory()}
-                            />
-                            <Image source={images[data.bigIconIndex]}/>
-                        </View>
-                    );
-                })}
+              </View>
+              <View style={styles.nextMatchContainer}>
+                {teams.filter((team) => team.nameAbb === "AFV").map((team) =>(
+                  <Image source={images[team.bigIconIndex]}/>
+                ))}
+                <Text style={styles.dash}>-</Text>
+                {teams.filter((team) => team.nameAbb === "DJL").map((team) =>(
+                  <Image source={images[team.bigIconIndex]}/>
+                ))}
+              </View>
             </ScrollView>
           </SafeAreaView>
       )
@@ -59,12 +55,22 @@ import {
         color: "white",
         alignSelf: "center",
         marginTop: "20%",
+      },
+      nextMatchContainer:{
+        justifyContent: "center",
+        flexDirection: "row",
+        marginTop: "10%",
+      },
+      dash:{
+        fontSize: 100,
+        
       }
   })
 
   const mapStateToProps = (state) => {
     return {
-      wins: state.winReducer.wins,
+      wins: state.teamReducer.wins,
+      teams: state.teamReducer.teams,
     };
   };
   
@@ -76,14 +82,4 @@ import {
 
   export default connect(mapStateToProps,mapDispatchToProps)(Home);
 
-  /*
-  {TeamData.map((data,key) =>{
-                    return(
-                        <View>
-                            <Text key={key}>
-                                <Text>{wins}</Text>
-                            </Text>
-                            <Image source={images[data.bigIconIndex]}/>
-                        </View>
-                    );
-                })}*/
+/* FLEXDIRECTION FLEXBOT*/

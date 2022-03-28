@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from "redux";
 
-import winReducer from "../Reducers/winReducer";
+import teamReducer from "../Reducers/teamReducer";
 
 const rootReducer = combineReducers(
-    {wins:winReducer}
+    {wins:teamReducer}
 );
 
 const configureStore = () =>{

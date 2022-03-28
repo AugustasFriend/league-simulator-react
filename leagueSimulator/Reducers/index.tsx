@@ -1,8 +1,8 @@
-import winReducer from './winReducer';
+import teamReducer from './teamReducer';
 import { combineReducers } from 'redux'
 
 const allReducers = combineReducers({
-    winReducer : winReducer
+    teamReducer : teamReducer
 });
 
 export default allReducers
