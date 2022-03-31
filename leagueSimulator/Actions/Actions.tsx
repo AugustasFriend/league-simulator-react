@@ -1,7 +1,7 @@
-import * as actionTypes from "../Constants";
+import * as actionTypes from '../Constants';
 
-export const addVictory =() =>{
-    return{
-        type: actionTypes.ADD_VICTORY,
-    }
-}
+export const addVictory = () => {
+  return {
+    type: actionTypes.ADD_VICTORY,
+  };
+};
