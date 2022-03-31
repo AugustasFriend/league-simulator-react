@@ -15,7 +15,7 @@ const images = [
   require('../Images/dijleon-big-logo.png'),
 ];
 
-const Home = ({wins: number, teams, addVictory}) => {
+const Home = ({teams}) => {
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView>

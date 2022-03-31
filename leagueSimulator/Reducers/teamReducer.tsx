@@ -1,7 +1,6 @@
 import * as actionTypes from '../Constants';
 
 const initialState = {
-  wins: 0,
   teams: [
     {name: 'Abersinn FV', nameAbb: 'AFV', bigIconIndex: 0, wins: 1},
     {name: 'Dijléon FCO', nameAbb: 'DJL', bigIconIndex: 1, wins: 3},

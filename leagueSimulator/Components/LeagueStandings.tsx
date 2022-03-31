@@ -3,9 +3,8 @@ import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 import {connect} from 'react-redux';
 import {addVictory} from '../Actions/Actions';
-import {bindActionCreators} from 'redux';
 
-function compare(teamA, teamB) {
+function compare(teamA: {wins: number}, teamB: {wins: number}) {
   if (teamA.wins > teamB.wins) {
     return -1;
   }
