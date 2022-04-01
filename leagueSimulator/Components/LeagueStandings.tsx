@@ -20,7 +20,15 @@ const LeagueStandings = ({teams}) => {
       <ScrollView>
         <View>
           {teams.sort(compare).map(team => (
-            <Text>{team.name}</Text>
+            <View>
+              <View style={styles.scoreContainer}>
+                <Text style={styles.nameText}>{team.name}</Text>
+                <Text style={styles.nameText}>
+                  {team.wins} {team.draws} {team.losses}
+                </Text>
+              </View>
+              <View style={styles.horizontalLine} />
+            </View>
           ))}
         </View>
       </ScrollView>
@@ -38,6 +46,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: '10%',
   },
+  scoreContainer: {
+    flexDirection: 'row',
+  },
+  nameText: {
+    fontSize: 20,
+    color: 'white',
+  },
+  horizontalLine: {
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+  }
 });
 
 const mapStateToProps = state => {

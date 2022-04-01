@@ -42,7 +42,14 @@ const initialState = {
       losses: 1,
       draws: 0,
     },
-    {name: 'Newford City', nameAbb: 'NFC', bigIconIndex: 5, wins: 5, losses: 2},
+    {
+      name: 'Newford City',
+      nameAbb: 'NFC',
+      bigIconIndex: 5,
+      wins: 5,
+      losses: 2,
+      draws: 0,
+    },
   ],
 };
 

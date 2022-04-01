@@ -21,21 +21,25 @@ const Home = ({teams}) => {
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView>
-        <View>
+        <View style={styles.bigtext}>
           <Text style={styles.bigtext}>Upcoming Match:</Text>
         </View>
-        <View style={styles.nextMatchContainer}>
-          <Image source={images[teamOne.bigIconIndex]} />
-          <Text style={styles.dash}>-</Text>
-          <Image source={images[teamTwo.bigIconIndex]} />
-        </View>
-        <View style={styles.scoreView}>
-          <Text style={styles.teamOneText}>
-            {teamOne.wins} - {teamOne.draws} - {teamOne.losses}
-          </Text>
-          <Text style={styles.teamTwoText}>
-            {teamTwo.wins} - {teamTwo.draws} - {teamTwo.losses}
-          </Text>
+        <View style={styles.HomeViewTeamContainer}>
+          <View style={styles.teamView}>
+            <Image source={images[teamOne.bigIconIndex]} />
+            <Text style={styles.teamOneText}>
+              {teamOne.wins} - {teamOne.draws} - {teamOne.losses}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.dash}>-</Text>
+          </View>
+          <View style={styles.teamView}>
+            <Image source={images[teamTwo.bigIconIndex]} />
+            <Text style={styles.teamTwoText}>
+              {teamTwo.wins} - {teamTwo.draws} - {teamTwo.losses}
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -54,17 +58,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: '20%',
   },
-  nextMatchContainer: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginTop: '10%',
-  },
   dash: {
     fontSize: 100,
   },
-  scoreView: {
-    justifyContent: 'center',
-    flexDirection: 'row',
+  teamView: {
+    alignItems: 'center', //Centered vertically
+    flex:1,
   },
   teamOneText: {
     fontSize: 30,
@@ -78,6 +77,11 @@ const styles = StyleSheet.create({
     marginLeft: '12%',
     marginTop: '5%',
   },
+  HomeViewTeamContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    marginTop: '10%',
+  }
 });
 
 const mapStateToProps = state => {
@@ -97,3 +101,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 /* FLEXDIRECTION FLEXBOT*/
 // tsc filename.tsx
+// <Text style={styles.dash}>-</Text>
