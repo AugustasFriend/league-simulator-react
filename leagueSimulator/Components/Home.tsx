@@ -16,6 +16,8 @@ const images = [
 ];
 
 const Home = ({teams}) => {
+  const teamOne = teams.find(team => team.nameAbb === 'AFV');
+  const teamTwo = teams.find(team => team.nameAbb === 'DJL');
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView>
@@ -23,17 +25,17 @@ const Home = ({teams}) => {
           <Text style={styles.bigtext}>Upcoming Match:</Text>
         </View>
         <View style={styles.nextMatchContainer}>
-          {teams
-            .filter(team => team.nameAbb === 'AFV')
-            .map(team => (
-              <Image source={images[team.bigIconIndex]} />
-            ))}
+          <Image source={images[teamOne.bigIconIndex]} />
           <Text style={styles.dash}>-</Text>
-          {teams
-            .filter(team => team.nameAbb === 'DJL')
-            .map(team => (
-              <Image source={images[team.bigIconIndex]} />
-            ))}
+          <Image source={images[teamTwo.bigIconIndex]} />
+        </View>
+        <View style={styles.scoreView}>
+          <Text style={styles.teamOneText}>
+            {teamOne.wins} - {teamOne.draws} - {teamOne.losses}
+          </Text>
+          <Text style={styles.teamTwoText}>
+            {teamTwo.wins} - {teamTwo.draws} - {teamTwo.losses}
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -59,6 +61,22 @@ const styles = StyleSheet.create({
   },
   dash: {
     fontSize: 100,
+  },
+  scoreView: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  teamOneText: {
+    fontSize: 30,
+    color: 'white',
+    marginRight: '12%',
+    marginTop: '5%',
+  },
+  teamTwoText: {
+    fontSize: 30,
+    color: 'white',
+    marginLeft: '12%',
+    marginTop: '5%',
   },
 });
 
