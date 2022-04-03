@@ -6,18 +6,46 @@ import {
   Text,
   View,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {addVictory} from '../Actions/Actions';
 
 const images = [
-  require('../Images/abersinn-big-logo.png'),
+  require('../Images/abersinnfv-logo.png'),
   require('../Images/dijleon-big-logo.png'),
+  require('../Images/kveciai-logo.png'),
+  require('../Images/sanvisenze-logo.png'),
+  require('../Images/atleticoledilla-logo.png'),
+  require('../Images/newfordcity-logo.png'),
+  require('../Images/grezztalo-logo.png'),
+  require('../Images/hunedatku-logo.png'),
+  require('../Images/syktva-logo.png'),
+  require('../Images/trikadona-logo.png'),
 ];
 
-const Home = ({teams}) => {
-  const teamOne = teams.find(team => team.nameAbb === 'AFV');
-  const teamTwo = teams.find(team => team.nameAbb === 'DJL');
+function findFirstTeam(currentRound: number, currentMatch: number): number{
+  if (currentRound == 1){
+    if (currentMatch == 1){
+      return 1;
+    } else if (currentMatch == 2) {
+      return 2;
+    } else if (currentMatch == 3) {
+      return 3;
+    } else if (currentMatch == 4) {
+      return 4;
+    } else if (currentMatch == 5) {
+      return 5;
+    }
+  }
+  return 10;
+}
+
+const Home = ({teams, currentRound, currentMatch}) => {
+  const teamOne = teams.find(
+    team => team.id === findFirstTeam(currentRound, currentMatch),
+  );
+  const teamTwo = teams.find(team => team.id === currentMatch);
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView>
@@ -41,6 +69,11 @@ const Home = ({teams}) => {
             </Text>
           </View>
         </View>
+        <View style={styles.HomeViewTeamContainer}>
+          <TouchableOpacity style={styles.watchButton}>
+            <Text style={styles.watchButtonText}>Watch!</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -63,31 +96,44 @@ const styles = StyleSheet.create({
   },
   teamView: {
     alignItems: 'center', //Centered vertically
-    flex:1,
+    flex: 1,
   },
   teamOneText: {
     fontSize: 30,
     color: 'white',
-    marginRight: '12%',
     marginTop: '5%',
   },
   teamTwoText: {
     fontSize: 30,
     color: 'white',
-    marginLeft: '12%',
     marginTop: '5%',
   },
   HomeViewTeamContainer: {
     justifyContent: 'center',
     flexDirection: 'row',
     marginTop: '10%',
-  }
+  },
+  watchButton: {
+    width: 200,
+    height: 60,
+    backgroundColor: '#333333',
+    borderRadius: 5,
+    borderColor: 'black',
+    borderWidth: 1,
+  },
+  watchButtonText: {
+    textAlign: 'center',
+    paddingTop: '4%',
+    color: 'white',
+    fontSize: 30,
+  },
 });
 
 const mapStateToProps = state => {
   return {
-    wins: state.teamReducer.wins,
     teams: state.teamReducer.teams,
+    currentRound: state.teamReducer.currentRound,
+    currentMatch: state.teamReducer.currentMatch,
   };
 };
 
