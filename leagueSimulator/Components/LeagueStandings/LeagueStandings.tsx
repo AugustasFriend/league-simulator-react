@@ -1,15 +1,8 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from 'react-native';
-
+import {SafeAreaView, ScrollView, Text, View, Image} from 'react-native';
+import styles from './styles';
 import {connect} from 'react-redux';
-import {addVictory} from '../Actions/Actions';
+import {addVictory} from '../../Actions/Actions';
 
 function compare(teamA: {wins: number}, teamB: {wins: number}) {
   if (teamA.wins > teamB.wins) {
@@ -22,16 +15,16 @@ function compare(teamA: {wins: number}, teamB: {wins: number}) {
 }
 
 const images = [
-  require('../Images/abersinnfv-logo.png'),
-  require('../Images/dijleon-big-logo.png'),
-  require('../Images/kveciai-logo.png'),
-  require('../Images/sanvisenze-logo.png'),
-  require('../Images/atleticoledilla-logo.png'),
-  require('../Images/newfordcity-logo.png'),
-  require('../Images/grezztalo-logo.png'),
-  require('../Images/hunedatku-logo.png'),
-  require('../Images/syktva-logo.png'),
-  require('../Images/trikadona-logo.png'),
+  require('../../Images/abersinnfv-logo.png'),
+  require('../../Images/dijleon-big-logo.png'),
+  require('../../Images/kveciai-logo.png'),
+  require('../../Images/sanvisenze-logo.png'),
+  require('../../Images/atleticoledilla-logo.png'),
+  require('../../Images/newfordcity-logo.png'),
+  require('../../Images/grezztalo-logo.png'),
+  require('../../Images/hunedatku-logo.png'),
+  require('../../Images/syktva-logo.png'),
+  require('../../Images/trikadona-logo.png'),
 ];
 
 const LeagueStandings = ({teams}) => {
@@ -61,42 +54,6 @@ const LeagueStandings = ({teams}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#433F3F',
-    flex: 1,
-  },
-  marginTop: {
-    marginTop: '2%',
-  },
-  scoreContainer: {
-    flexDirection: 'row',
-  },
-  nameText: {
-    fontSize: 25,
-    color: 'white',
-    textAlignVertical: 'center',
-    marginLeft: '2%',
-  },
-  horizontalLine: {
-    borderBottomColor: 'white',
-    borderBottomWidth: 1,
-    marginTop: '2%',
-    marginBottom: '2%',
-  },
-  imageSize: {
-    width: 65,
-    height: 65,
-  },
-  imageAdjuster: {
-    flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'contain',
-    marginLeft: '5%',
-  }
-});
 
 const mapStateToProps = state => {
   return {

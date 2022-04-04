@@ -2,26 +2,26 @@ import React, {useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {addVictory, calcResults} from '../Actions/Actions';
+import {calcResults} from '../../Actions/Actions';
+import styles from './styles';
 
 const images = [
-  require('../Images/abersinnfv-logo.png'),
-  require('../Images/dijleon-big-logo.png'),
-  require('../Images/kveciai-logo.png'),
-  require('../Images/sanvisenze-logo.png'),
-  require('../Images/atleticoledilla-logo.png'),
-  require('../Images/newfordcity-logo.png'),
-  require('../Images/grezztalo-logo.png'),
-  require('../Images/hunedatku-logo.png'),
-  require('../Images/syktva-logo.png'),
-  require('../Images/trikadona-logo.png'),
+  require('../../Images/abersinnfv-logo.png'),
+  require('../../Images/dijleon-big-logo.png'),
+  require('../../Images/kveciai-logo.png'),
+  require('../../Images/sanvisenze-logo.png'),
+  require('../../Images/atleticoledilla-logo.png'),
+  require('../../Images/newfordcity-logo.png'),
+  require('../../Images/grezztalo-logo.png'),
+  require('../../Images/hunedatku-logo.png'),
+  require('../../Images/syktva-logo.png'),
+  require('../../Images/trikadona-logo.png'),
 ];
 
 function findPairs(currentRound: number, currentMatch: number): number[] {
@@ -86,56 +86,6 @@ const Home = ({teams, currentRound, currentMatch, calcResults}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#433F3F',
-    flex: 1,
-  },
-  bigtext: {
-    fontSize: 30,
-    fontFamily: 'Montserrat',
-    color: 'white',
-    alignSelf: 'center',
-    marginTop: '20%',
-  },
-  dash: {
-    fontSize: 100,
-  },
-  teamView: {
-    alignItems: 'center', //Centered vertically
-    flex: 1,
-  },
-  teamOneText: {
-    fontSize: 30,
-    color: 'white',
-    marginTop: '5%',
-  },
-  teamTwoText: {
-    fontSize: 30,
-    color: 'white',
-    marginTop: '5%',
-  },
-  HomeViewTeamContainer: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginTop: '10%',
-  },
-  watchButton: {
-    width: 200,
-    height: 60,
-    backgroundColor: '#333333',
-    borderRadius: 5,
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  watchButtonText: {
-    textAlign: 'center',
-    paddingTop: '4%',
-    color: 'white',
-    fontSize: 30,
-  },
-});
 
 const mapStateToProps = state => {
   return {

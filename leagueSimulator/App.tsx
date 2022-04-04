@@ -11,7 +11,7 @@ import type {Node} from 'react';
 import {StyleSheet, Text, useColorScheme, View, Image} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import NavBar from './Components/NavBar';
+import NavBar from './Components/NavBar/NavBar';
 import {NavigationContainer} from '@react-navigation/native';
 
 const Section = ({children, title}): Node => {
