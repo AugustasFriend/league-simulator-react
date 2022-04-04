@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {addVictory} from '../Actions/Actions';
+import {addVictory, calcResults} from '../Actions/Actions';
 
 const images = [
   require('../Images/abersinnfv-logo.png'),
@@ -24,28 +24,32 @@ const images = [
   require('../Images/trikadona-logo.png'),
 ];
 
-function findFirstTeam(currentRound: number, currentMatch: number): number{
-  if (currentRound == 1){
-    if (currentMatch == 1){
-      return 1;
+function findPairs(currentRound: number, currentMatch: number): number[] {
+  if (currentRound == 1) {
+    return [currentMatch, 11 - currentMatch];
+  } else if (currentRound == 2) {
+    if (currentMatch == 1) {
+      return [1, 9];
     } else if (currentMatch == 2) {
-      return 2;
+      return [10, 8];
     } else if (currentMatch == 3) {
-      return 3;
+      return [2, 7];
     } else if (currentMatch == 4) {
-      return 4;
+      return [3, 6];
     } else if (currentMatch == 5) {
-      return 5;
+      return [4, 5];
     }
   }
-  return 10;
+  return [];
 }
 
-const Home = ({teams, currentRound, currentMatch}) => {
+const Home = ({teams, currentRound, currentMatch, calcResults}) => {
   const teamOne = teams.find(
-    team => team.id === findFirstTeam(currentRound, currentMatch),
+    team => team.id === findPairs(currentRound, currentMatch)[0],
   );
-  const teamTwo = teams.find(team => team.id === currentMatch);
+  const teamTwo = teams.find(
+    team => team.id === findPairs(currentRound, currentMatch)[1],
+  );
   return (
     <SafeAreaView style={styles.background}>
       <ScrollView>
@@ -70,7 +74,11 @@ const Home = ({teams, currentRound, currentMatch}) => {
           </View>
         </View>
         <View style={styles.HomeViewTeamContainer}>
-          <TouchableOpacity style={styles.watchButton}>
+          <TouchableOpacity
+            style={styles.watchButton}
+            onPress={() => {
+              calcResults(teamOne, teamTwo);
+            }}>
             <Text style={styles.watchButtonText}>Watch!</Text>
           </TouchableOpacity>
         </View>
@@ -139,7 +147,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addVictory: () => dispatch(addVictory()),
+    calcResults: (teamOne, teamTwo) => dispatch(calcResults(teamOne, teamTwo)),
   };
 };
 

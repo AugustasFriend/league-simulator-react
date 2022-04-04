@@ -10,6 +10,7 @@ const initialState = {
       wins: 1,
       losses: 1,
       draws: 0,
+      skill: 5,
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ const initialState = {
       wins: 3,
       losses: 0,
       draws: 0,
+      skill: 5,
     },
     {
       id: 3,
@@ -28,6 +30,7 @@ const initialState = {
       wins: 2,
       losses: 4,
       draws: 0,
+      skill: 5,
     },
     {
       id: 4,
@@ -37,6 +40,7 @@ const initialState = {
       wins: 1,
       losses: 3,
       draws: 0,
+      skill: 5,
     },
     {
       id: 5,
@@ -46,6 +50,7 @@ const initialState = {
       wins: 0,
       losses: 1,
       draws: 0,
+      skill: 5,
     },
     {
       id: 6,
@@ -55,6 +60,7 @@ const initialState = {
       wins: 5,
       losses: 2,
       draws: 0,
+      skill: 5,
     },
     {
       id: 7,
@@ -64,6 +70,7 @@ const initialState = {
       wins: 1,
       losses: 4,
       draws: 1,
+      skill: 5,
     },
     {
       id: 8,
@@ -73,6 +80,7 @@ const initialState = {
       wins: 6,
       losses: 0,
       draws: 0,
+      skill: 5,
     },
     {
       id: 9,
@@ -82,6 +90,7 @@ const initialState = {
       wins: 3,
       losses: 3,
       draws: 0,
+      skill: 5,
     },
     {
       id: 10,
@@ -91,6 +100,7 @@ const initialState = {
       wins: 0,
       losses: 5,
       draws: 2,
+      skill: 5,
     },
   ],
   currentRound: 1,
@@ -99,16 +109,53 @@ const initialState = {
 
 const teamReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_VICTORY:
+    case actionTypes.CALC_RESULTS:
+      const teamOneWins = action.payload.teamOne.wins + 1;
+      const teamTwoWins = action.payload.teamTwo.wins + 1;
+      if (
+        Math.floor(Math.random() * action.payload.teamOne.skill) >
+        Math.floor(Math.random() * action.payload.teamTwo.skill)
+      ) {
+        return {
+          ...state,
+          teams: state.teams.map(team =>
+            team.id == action.payload.teamOne.id
+              ? {...team, wins: teamOneWins}
+              : team,
+          ),
+        };
+      } else if (
+        Math.floor(Math.random() * action.payload.teamOne.skill) <
+        Math.floor(Math.random() * action.payload.teamTwo.skill)
+      ) {
+        return {
+          ...state,
+          teams: state.teams.map(team =>
+            team.id == action.payload.teamTwo.id
+              ? {...team, wins: teamTwoWins}
+              : team,
+          ),
+        };
+      }else {
+        return{
+          ...state,
+          teams: state.teams.map(team =>
+            team.id == action.payload.teamTwo.id
+              ? {...team, wins: teamTwoWins}
+              : team,
+          ),
+        }
+      }
+    default:
+      return state;
+  }
+};
+export default teamReducer;
+
+/*case actionTypes.ADD_VICTORY:
       const updatedWins = state.wins + 1;
       TeamData[0].wins = state.wins + 1;
       return {
         ...state,
         wins: updatedWins,
-      };
-    default:
-      return state;
-  }
-};
-
-export default teamReducer;
+      }; */
