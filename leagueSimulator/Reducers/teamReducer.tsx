@@ -103,15 +103,11 @@ const initialState = {
       skill: 5,
     },
   ],
-  currentRound: 1,
-  currentMatch: 1,
 };
 
 const teamReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CALC_RESULTS:
-      const teamOneWins = action.payload.teamOne.wins + 1;
-      const teamTwoWins = action.payload.teamTwo.wins + 1;
       if (
         Math.floor(Math.random() * action.payload.teamOne.skill) >
         Math.floor(Math.random() * action.payload.teamTwo.skill)
@@ -120,7 +116,9 @@ const teamReducer = (state = initialState, action) => {
           ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamOne.id
-              ? {...team, wins: teamOneWins}
+              ? {...team, wins: team.wins + 1}
+              : team.id == action.payload.teamTwo.id
+              ? {...team, losses: team.losses + 1}
               : team,
           ),
         };
@@ -132,30 +130,26 @@ const teamReducer = (state = initialState, action) => {
           ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamTwo.id
-              ? {...team, wins: teamTwoWins}
+              ? {...team, wins: team.wins + 1}
+              : team.id == action.payload.teamOne.id
+              ? {...team, losses: team.losses + 1}
               : team,
           ),
         };
-      }else {
-        return{
+      } else {
+        return {
           ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamTwo.id
-              ? {...team, wins: teamTwoWins}
+              ? {...team, draws: team.draws + 1}
+              : team.id == action.payload.teamOne.id
+              ? {...team, draws: team.draws + 1}
               : team,
           ),
-        }
+        };
       }
     default:
       return state;
   }
 };
 export default teamReducer;
-
-/*case actionTypes.ADD_VICTORY:
-      const updatedWins = state.wins + 1;
-      TeamData[0].wins = state.wins + 1;
-      return {
-        ...state,
-        wins: updatedWins,
-      }; */

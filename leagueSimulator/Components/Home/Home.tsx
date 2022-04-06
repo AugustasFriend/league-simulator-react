@@ -90,8 +90,8 @@ const Home = ({teams, currentRound, currentMatch, calcResults}) => {
 const mapStateToProps = state => {
   return {
     teams: state.teamReducer.teams,
-    currentRound: state.teamReducer.currentRound,
-    currentMatch: state.teamReducer.currentMatch,
+    currentRound: state.scheduleReducer.currentRound,
+    currentMatch: state.scheduleReducer.currentMatch,
   };
 };
 
