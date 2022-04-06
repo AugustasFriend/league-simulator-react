@@ -10,6 +10,7 @@ import {
 import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
+import {concludeMatch} from '../../Actions/Actions';
 import styles from './styles';
 
 const images = [
@@ -44,7 +45,14 @@ function findPairs(currentRound: number, currentMatch: number): number[] {
   return [];
 }
 
-const Home = ({teams, currentRound, currentMatch, calcResults, calcPoints}) => {
+const Home = ({
+  teams,
+  currentRound,
+  currentMatch,
+  calcResults,
+  calcPoints,
+  concludeMatch,
+}) => {
   const teamOne = teams.find(
     team => team.id === findPairs(currentRound, currentMatch)[0],
   );
@@ -78,7 +86,7 @@ const Home = ({teams, currentRound, currentMatch, calcResults, calcPoints}) => {
           <TouchableOpacity
             style={styles.watchButton}
             onPress={() => {
-              calcResults(teamOne, teamTwo), calcPoints();
+              calcResults(teamOne, teamTwo), calcPoints(), concludeMatch();
             }}>
             <Text style={styles.watchButtonText}>Watch!</Text>
           </TouchableOpacity>
@@ -100,6 +108,7 @@ const mapDispatchToProps = dispatch => {
   return {
     calcResults: (teamOne, teamTwo) => dispatch(calcResults(teamOne, teamTwo)),
     calcPoints: () => dispatch(calcPoints()),
+    concludeMatch: () => dispatch(concludeMatch()),
   };
 };
 

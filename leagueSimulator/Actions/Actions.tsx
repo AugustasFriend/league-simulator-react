@@ -1,5 +1,6 @@
 import * as actionTypes from '../Constants';
 
+// ---- Actions for teamReducer ---- //
 export const changeMatch = () => {
   return {
     type: actionTypes.CHANGE_MATCH,
@@ -25,5 +26,12 @@ export const calcResults = (teamOne, teamTwo) => {
 export const calcPoints = () => {
   return {
     type: actionTypes.CALC_POINTS,
+  }
+}
+
+// ---- Actions for scheduleReducer ---- //
+export const concludeMatch = () => {
+  return {
+    type: actionTypes.CONCLUDE_MATCH,
   }
 }
