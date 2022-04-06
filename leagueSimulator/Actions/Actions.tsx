@@ -1,11 +1,5 @@
 import * as actionTypes from '../Constants';
 
-export const addVictory = () => {
-  return {
-    type: actionTypes.ADD_VICTORY,
-  };
-};
-
 export const changeMatch = () => {
   return {
     type: actionTypes.CHANGE_MATCH,
@@ -25,5 +19,11 @@ export const calcResults = (teamOne, teamTwo) => {
       teamOne: teamOne,
       teamTwo: teamTwo,
     }
+  }
+}
+
+export const calcPoints = () => {
+  return {
+    type: actionTypes.CALC_POINTS,
   }
 }

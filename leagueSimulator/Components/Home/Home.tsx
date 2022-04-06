@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
+import {calcPoints} from '../../Actions/Actions';
 import styles from './styles';
 
 const images = [
@@ -43,7 +44,7 @@ function findPairs(currentRound: number, currentMatch: number): number[] {
   return [];
 }
 
-const Home = ({teams, currentRound, currentMatch, calcResults}) => {
+const Home = ({teams, currentRound, currentMatch, calcResults, calcPoints}) => {
   const teamOne = teams.find(
     team => team.id === findPairs(currentRound, currentMatch)[0],
   );
@@ -77,7 +78,7 @@ const Home = ({teams, currentRound, currentMatch, calcResults}) => {
           <TouchableOpacity
             style={styles.watchButton}
             onPress={() => {
-              calcResults(teamOne, teamTwo);
+              calcResults(teamOne, teamTwo), calcPoints();
             }}>
             <Text style={styles.watchButtonText}>Watch!</Text>
           </TouchableOpacity>
@@ -98,6 +99,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     calcResults: (teamOne, teamTwo) => dispatch(calcResults(teamOne, teamTwo)),
+    calcPoints: () => dispatch(calcPoints()),
   };
 };
 

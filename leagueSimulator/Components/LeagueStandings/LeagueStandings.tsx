@@ -4,11 +4,11 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import {addVictory} from '../../Actions/Actions';
 
-function compare(teamA: {wins: number}, teamB: {wins: number}) {
-  if (teamA.wins > teamB.wins) {
+function compare(teamA: {points: number}, teamB: {points: number}) {
+  if (teamA.points > teamB.points) {
     return -1;
   }
-  if (teamA.wins < teamB.wins) {
+  if (teamA.points < teamB.points) {
     return 1;
   }
   return 0;

@@ -2,7 +2,7 @@ import * as actionTypes from '../Constants';
 
 const initialState = {
   currentRound: 1,
-  currentMatch: 2,
+  currentMatch: 1,
 };
 
 const scheduleReducer = (state = initialState, action) => {

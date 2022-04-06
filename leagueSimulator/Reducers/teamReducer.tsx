@@ -10,6 +10,7 @@ const initialState = {
       wins: 1,
       losses: 1,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -20,6 +21,7 @@ const initialState = {
       wins: 3,
       losses: 0,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -30,6 +32,7 @@ const initialState = {
       wins: 2,
       losses: 4,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -40,6 +43,7 @@ const initialState = {
       wins: 1,
       losses: 3,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -50,6 +54,7 @@ const initialState = {
       wins: 0,
       losses: 1,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -60,6 +65,7 @@ const initialState = {
       wins: 5,
       losses: 2,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -70,6 +76,7 @@ const initialState = {
       wins: 1,
       losses: 4,
       draws: 1,
+      points: 0,
       skill: 5,
     },
     {
@@ -80,6 +87,7 @@ const initialState = {
       wins: 6,
       losses: 0,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -90,6 +98,7 @@ const initialState = {
       wins: 3,
       losses: 3,
       draws: 0,
+      points: 0,
       skill: 5,
     },
     {
@@ -100,6 +109,7 @@ const initialState = {
       wins: 0,
       losses: 5,
       draws: 2,
+      points: 0,
       skill: 5,
     },
   ],
@@ -148,6 +158,15 @@ const teamReducer = (state = initialState, action) => {
           ),
         };
       }
+    case actionTypes.CALC_POINTS:
+      return {
+        ...state,
+        teams: state.teams.map(team =>
+          team.name == ''
+            ? console.log('ayo')
+            : {...team, points: team.wins * 3 + team.draws},
+        ),
+      };
     default:
       return state;
   }
