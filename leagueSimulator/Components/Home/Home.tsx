@@ -11,6 +11,7 @@ import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
+import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
 
 const images = [
@@ -26,25 +27,6 @@ const images = [
   require('../../Images/trikadona-logo.png'),
 ];
 
-function findPairs(currentRound: number, currentMatch: number): number[] {
-  if (currentRound == 1) {
-    return [currentMatch, 11 - currentMatch];
-  } else if (currentRound == 2) {
-    if (currentMatch == 1) {
-      return [1, 9];
-    } else if (currentMatch == 2) {
-      return [10, 8];
-    } else if (currentMatch == 3) {
-      return [2, 7];
-    } else if (currentMatch == 4) {
-      return [3, 6];
-    } else if (currentMatch == 5) {
-      return [4, 5];
-    }
-  }
-  return [];
-}
-
 const Home = ({
   teams,
   currentRound,
@@ -54,10 +36,10 @@ const Home = ({
   concludeMatch,
 }) => {
   const teamOne = teams.find(
-    team => team.id === findPairs(currentRound, currentMatch)[0],
+    team => team.id === RoundRobinFormat(currentRound, currentMatch)[0],
   );
   const teamTwo = teams.find(
-    team => team.id === findPairs(currentRound, currentMatch)[1],
+    team => team.id === RoundRobinFormat(currentRound, currentMatch)[1],
   );
   return (
     <SafeAreaView style={styles.background}>
