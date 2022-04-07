@@ -35,6 +35,31 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginLeft: '5%',
   },
+  titleText:{
+    fontSize: 40,
+    fontFamily: 'Montserrat',
+    color: 'white',
+    textAlign: 'center'
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  LeagueTextContainer:{
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    borderRightColor: 'black',
+    borderRightWidth: 1,
+    width: 270,
+    backgroundColor: '#241E1E',
+  },
+  BracketTextContainer:{
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    borderLeftColor: 'black',
+    borderLeftWidth: 1,
+    width: 270,
+  },
 });
 
 export default styles;

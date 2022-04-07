@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, Text, View, Image} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
-import {addVictory} from '../../Actions/Actions';
 
 function compare(teamA: {points: number}, teamB: {points: number}) {
   if (teamA.points > teamB.points) {
@@ -30,6 +36,14 @@ const images = [
 const LeagueStandings = ({teams}) => {
   return (
     <SafeAreaView style={styles.background}>
+      <View style={styles.titleContainer}>
+        <TouchableOpacity style={styles.LeagueTextContainer}>
+          <Text style={styles.titleText}>League</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.BracketTextContainer}>
+          <Text style={styles.titleText}>Final Bracket</Text>
+        </TouchableOpacity>
+      </View>
       <ScrollView>
         <View style={styles.marginTop}>
           {teams.sort(compare).map(team => (
@@ -43,7 +57,7 @@ const LeagueStandings = ({teams}) => {
                 </View>
                 <Text style={styles.nameText}>{team.name}</Text>
                 <Text style={styles.nameText}>
-                  {team.wins} {team.draws} {team.losses}
+                  {team.wins} {team.draws} {team.losses} {team.points}
                 </Text>
               </View>
               <View style={styles.horizontalLine} />
