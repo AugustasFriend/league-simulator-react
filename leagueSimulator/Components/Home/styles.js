@@ -49,6 +49,20 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 30,
   },
+  modalView: {
+    backgroundColor: '#433F3F',
+    width: '80%',
+    height: '70%',
+    alignSelf: 'center',
+    top: '15%',
+    borderRadius: 20,
+    alignItems: 'center',
+  },
+  transparentModal: {
+    flex: 1,
+    backgroundColor: '#000000AA',
+    justifyContent: 'center'
+  }
 });
 
 export default styles;

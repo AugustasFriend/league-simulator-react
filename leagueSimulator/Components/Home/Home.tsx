@@ -6,6 +6,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
@@ -42,8 +43,30 @@ const Home = ({
   const teamTwo = teams.find(
     team => team.id === RoundRobinFormat(currentRound, currentMatch)[1],
   );
+
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <SafeAreaView style={styles.background}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          console.log('Modal has been closed');
+        }}>
+        <View style={styles.transparentModal}>
+          <View style={styles.modalView}>
+            <TouchableOpacity
+              style={styles.watchButton}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}>
+              <Text>ayyo</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
       <ScrollView>
         <View style={styles.bigtext}>
           <Text style={styles.bigtext}>Upcoming Match:</Text>
@@ -70,7 +93,10 @@ const Home = ({
             <TouchableOpacity
               style={styles.watchButton}
               onPress={() => {
-                calcResults(teamOne, teamTwo), calcPoints(), concludeMatch();
+                calcResults(teamOne, teamTwo),
+                  calcPoints(),
+                  concludeMatch(),
+                  setModalVisible(!modalVisible);
               }}>
               <Text style={styles.watchButtonText}>Watch!</Text>
             </TouchableOpacity>
