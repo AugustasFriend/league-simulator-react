@@ -31,6 +31,7 @@ const Home = ({
   teams,
   currentRound,
   currentMatch,
+  playoffs,
   calcResults,
   calcPoints,
   concludeMatch,
@@ -65,13 +66,15 @@ const Home = ({
           </View>
         </View>
         <View style={styles.HomeViewTeamContainer}>
-          <TouchableOpacity
-            style={styles.watchButton}
-            onPress={() => {
-              calcResults(teamOne, teamTwo), calcPoints(), concludeMatch();
-            }}>
-            <Text style={styles.watchButtonText}>Watch!</Text>
-          </TouchableOpacity>
+          {!playoffs && (
+            <TouchableOpacity
+              style={styles.watchButton}
+              onPress={() => {
+                calcResults(teamOne, teamTwo), calcPoints(), concludeMatch();
+              }}>
+              <Text style={styles.watchButtonText}>Watch!</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -83,6 +86,7 @@ const mapStateToProps = state => {
     teams: state.teamReducer.teams,
     currentRound: state.scheduleReducer.currentRound,
     currentMatch: state.scheduleReducer.currentMatch,
+    playoffs: state.scheduleReducer.playoffs,
   };
 };
 
