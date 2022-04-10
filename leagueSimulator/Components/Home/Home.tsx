@@ -52,7 +52,7 @@ const Home = ({
           <View style={styles.teamView}>
             <Image source={images[teamOne.bigIconIndex]} />
             <Text style={styles.teamOneText}>
-              {teamOne.wins} - {teamOne.draws} - {teamOne.losses}
+              {teamOne.wins}W - {teamOne.draws}D - {teamOne.losses}L
             </Text>
           </View>
           <View>
@@ -61,7 +61,7 @@ const Home = ({
           <View style={styles.teamView}>
             <Image source={images[teamTwo.bigIconIndex]} />
             <Text style={styles.teamTwoText}>
-              {teamTwo.wins} - {teamTwo.draws} - {teamTwo.losses}
+              {teamTwo.wins}W - {teamTwo.draws}D - {teamTwo.losses}L
             </Text>
           </View>
         </View>

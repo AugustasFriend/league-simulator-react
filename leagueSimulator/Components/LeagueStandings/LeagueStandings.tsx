@@ -44,26 +44,26 @@ const LeagueStandings = ({teams}) => {
           <Text style={styles.titleText}>Final Bracket</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView>
-        <View style={styles.marginTop}>
-          {teams.sort(compare).map(team => (
-            <View>
-              <View style={styles.scoreContainer}>
-                <View style={styles.imageSize}>
-                  <Image
-                    source={images[team.bigIconIndex]}
-                    style={styles.imageAdjuster}
-                  />
-                </View>
-                <Text style={styles.nameText}>{team.name}</Text>
-                <Text style={styles.nameText}>
-                  {team.wins} {team.draws} {team.losses} {team.points}
+      <ScrollView style={styles.scrollView}>
+        {teams.sort(compare).map(team => (
+          <View>
+            <View style={styles.teamInfoContainer}>
+              <View style={styles.imageSize}>
+                <Image
+                  source={images[team.bigIconIndex]}
+                  style={styles.imageAdjuster}
+                />
+              </View>
+              <Text style={styles.nameText}>{team.name}</Text>
+              <View style={styles.statsContainer}>
+                <Text style={styles.statsText}>
+                  {team.points}Pts  {team.wins}W  {team.draws}D  {team.losses}L
                 </Text>
               </View>
-              <View style={styles.horizontalLine} />
             </View>
-          ))}
-        </View>
+            <View style={styles.horizontalLine} />
+          </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

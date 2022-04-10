@@ -6,10 +6,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#433F3F',
     flex: 1,
   },
-  marginTop: {
-    marginTop: '2%',
+  statsContainer: {
+    flexDirection: 'row',
+    marginLeft: 'auto',
   },
-  scoreContainer: {
+  teamInfoContainer: {
     flexDirection: 'row',
   },
   nameText: {
@@ -17,6 +18,12 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlignVertical: 'center',
     marginLeft: '2%',
+  },
+  statsText: {
+    fontSize: 25,
+    color: 'white',
+    textAlignVertical: 'center',
+    paddingRight: '3%',
   },
   horizontalLine: {
     borderBottomColor: 'white',
@@ -35,17 +42,17 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginLeft: '5%',
   },
-  titleText:{
+  titleText: {
     fontSize: 40,
     fontFamily: 'Montserrat',
     color: 'white',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   titleContainer: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
-  LeagueTextContainer:{
+  LeagueTextContainer: {
     borderBottomColor: 'black',
     borderBottomWidth: 2,
     borderRightColor: 'black',
@@ -53,12 +60,15 @@ const styles = StyleSheet.create({
     width: 270,
     backgroundColor: '#241E1E',
   },
-  BracketTextContainer:{
+  BracketTextContainer: {
     borderBottomColor: 'black',
     borderBottomWidth: 2,
     borderLeftColor: 'black',
     borderLeftWidth: 1,
     width: 270,
+  },
+  scrollView: {
+    marginTop: '2%',
   },
 });
 
