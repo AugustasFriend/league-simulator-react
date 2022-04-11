@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
+import MatchResults from '../MatchResults/MatchResults';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
 
@@ -57,13 +58,16 @@ const Home = ({
         }}>
         <View style={styles.transparentModal}>
           <View style={styles.modalView}>
-            <TouchableOpacity
-              style={styles.watchButton}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}>
-              <Text>ayyo</Text>
-            </TouchableOpacity>
+            <MatchResults />
+            <View style={styles.backButtonView}>
+              <TouchableOpacity
+                style={styles.watchButton}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                }}>
+                <Text style={styles.buttonText}>Back</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -98,7 +102,7 @@ const Home = ({
                   concludeMatch(),
                   setModalVisible(!modalVisible);
               }}>
-              <Text style={styles.watchButtonText}>Watch!</Text>
+              <Text style={styles.buttonText}>Watch!</Text>
             </TouchableOpacity>
           )}
         </View>

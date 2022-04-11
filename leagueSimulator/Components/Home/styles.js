@@ -1,4 +1,3 @@
-import React from 'react';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
   },
-  watchButtonText: {
+  buttonText: {
     textAlign: 'center',
     paddingTop: '4%',
     color: 'white',
@@ -54,15 +53,15 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '70%',
     alignSelf: 'center',
-    top: '15%',
     borderRadius: 20,
     alignItems: 'center',
   },
   transparentModal: {
     flex: 1,
     backgroundColor: '#000000AA',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
+  backButtonView: {},
 });
 
 export default styles;
