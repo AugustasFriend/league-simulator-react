@@ -6,3 +6,5 @@ export const CALC_POINTS = 'CALC_POINTS';
 
 // ---- Actions for scheduleReducer ---- //
 export const CONCLUDE_MATCH = 'CONCLUDE_MATCH';
+
+// ---- Actions for playerReducer ---- //

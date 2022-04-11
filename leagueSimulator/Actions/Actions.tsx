@@ -35,3 +35,5 @@ export const concludeMatch = () => {
     type: actionTypes.CONCLUDE_MATCH,
   }
 }
+
+// ---- Actions for playerReducer ---- //
