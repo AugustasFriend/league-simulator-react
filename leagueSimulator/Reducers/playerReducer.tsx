@@ -5,6 +5,9 @@ const initialState = {
     {
       name: 'Cristiano Ronaldo',
       nameAbb: 'C. Ronaldo',
+      defSkill: 1,
+      midSkill: 1,
+      atkSkill: 1,
     },
   ],
 };
