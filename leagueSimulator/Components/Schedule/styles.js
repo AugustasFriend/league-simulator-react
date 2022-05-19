@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     paddingLeft: 40,
     paddingRight: 40,
+    marginTop: '2%',
   },
   weekTextMiddle: {
     fontSize: 30,
@@ -22,7 +23,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     paddingLeft: 40,
     paddingRight: 40,
+    marginTop: '2%',
   },
+  horizontalLine: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    marginTop: '1%',
+  },
+  matchView: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+  }
 });
 
 export default styles;

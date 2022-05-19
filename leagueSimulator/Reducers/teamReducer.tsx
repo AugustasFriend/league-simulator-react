@@ -12,6 +12,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 2,
@@ -23,6 +24,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 3,
@@ -34,6 +36,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 4,
@@ -45,6 +48,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 5,
@@ -56,6 +60,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 6,
@@ -67,6 +72,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 7,
@@ -78,6 +84,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 8,
@@ -89,6 +96,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 9,
@@ -100,6 +108,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
     {
       id: 10,
@@ -111,6 +120,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
+      matchHistory: [{name: 'team', outcome: '1'}],
     },
   ],
 };
