@@ -8,29 +8,21 @@ function RoundRobinSchedule(currentRound: number, currentMatch: number) {
       [5, 6],
     ];
   } else if (currentRound == 2) {
-    if (currentMatch == 1) {
-      return [1, 9];
-    } else if (currentMatch == 2) {
-      return [10, 8];
-    } else if (currentMatch == 3) {
-      return [2, 7];
-    } else if (currentMatch == 4) {
-      return [3, 6];
-    } else if (currentMatch == 5) {
-      return [4, 5];
-    }
+    return [
+      [1, 9],
+      [10, 8],
+      [2, 7],
+      [3, 6],
+      [4, 5],
+    ];
   } else if (currentRound == 3) {
-    if (currentMatch == 1) {
-      return [1, 8];
-    } else if (currentMatch == 2) {
-      return [9, 7];
-    } else if (currentMatch == 3) {
-      return [10, 6];
-    } else if (currentMatch == 4) {
-      return [2, 5];
-    } else if (currentMatch == 5) {
-      return [3, 4];
-    }
+    return [
+      [1, 8],
+      [9, 7],
+      [10, 6],
+      [2, 5],
+      [3, 4],
+    ];
   } else if (currentRound == 4) {
     if (currentMatch == 1) {
       return [1, 7];
@@ -107,4 +99,4 @@ function RoundRobinSchedule(currentRound: number, currentMatch: number) {
   return [];
 }
 
-export default RoundRobinchedule;
+export default RoundRobinSchedule;

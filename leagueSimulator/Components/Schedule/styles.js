@@ -32,7 +32,32 @@ const styles = StyleSheet.create({
   },
   matchView: {
     justifyContent: 'center',
+  },
+  matchContentView: {
+    justifyContent: 'center',
     flexDirection: 'row',
+  },
+  imageAdjuster: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'contain',
+  },
+  imageSize: {
+    width: 120,
+    height: 120,
+  },
+  dash: {
+    fontSize: 60,
+    marginTop: '4%',
+    marginLeft: '10%',
+    marginRight: '10%',
+  },
+  matchText: {
+    fontSize: 25,
+    fontFamily: 'Montserrat',
+    color: 'white',
+    textAlign: 'center',
   }
 });
 

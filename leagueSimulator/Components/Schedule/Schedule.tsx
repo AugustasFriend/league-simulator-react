@@ -13,7 +13,7 @@ import RoundRobinchedule from './RoundRobinSchedule';
 
 const images = [
   require('../../Images/abersinnfv-logo.png'),
-  require('../../Images/dijleon-big-logo.png'),
+  require('../../Images/dijleon-logo.png'),
   require('../../Images/kveciai-logo.png'),
   require('../../Images/sanvisenze-logo.png'),
   require('../../Images/atleticoledilla-logo.png'),
@@ -26,8 +26,16 @@ const images = [
 
 const Schedule = ({week, match, teams}) => {
   const matchups = [
-    teams.find(team => team.id == 1),
-    teams.find(team => team.id == 2),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[0][0]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[0][1]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[1][0]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[1][1]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[2][0]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[2][1]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[3][0]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[3][1]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[4][0]),
+    teams.find(team => team.id === RoundRobinchedule(week, match)[4][1]),
   ];
 
   return (
@@ -40,9 +48,22 @@ const Schedule = ({week, match, teams}) => {
       <View style={styles.horizontalLine} />
       <ScrollView>
         <View style={styles.matchView}>
-          <Text>Match 1</Text>
-          <Image source={images[matchups[0].bigIconIndex]} />
-          <Image source={images[matchups[1].bigIconIndex]} />
+          <Text style={styles.matchText}>Match 1</Text>
+          <View style={styles.matchContentView}>
+            <View style={styles.imageSize}>
+              <Image
+                source={images[matchups[0].bigIconIndex]}
+                style={styles.imageAdjuster}
+              />
+            </View>
+            <Text style={styles.dash}>-</Text>
+            <View style={styles.imageSize}>
+              <Image
+                source={images[matchups[1].bigIconIndex]}
+                style={styles.imageAdjuster}
+              />
+            </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -62,3 +83,23 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Schedule);
+
+/* <View style={styles.matchView}>
+          <Text style={styles.matchText}>Match 1</Text>
+          <View style={styles.matchContentView}>
+            <View style={styles.imageSize}>
+              <Image
+                source={images[matchups[0].bigIconIndex]}
+                style={styles.imageAdjuster}
+              />
+            </View>
+            <Text style={styles.dash}>-</Text>
+            <View style={styles.imageSize}>
+              <Image
+                source={images[matchups[1].bigIconIndex]}
+                style={styles.imageAdjuster}
+              />
+            </View>
+          </View>
+        </View>
+        {matchups.map()}*/
