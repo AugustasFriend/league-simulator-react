@@ -167,7 +167,7 @@ const teamReducer = (state = initialState, action) => {
               : team,
           ),
         };
-      }
+      };
     case actionTypes.CALC_POINTS:
       return {
         ...state,
@@ -177,6 +177,10 @@ const teamReducer = (state = initialState, action) => {
             : {...team, points: team.wins * 3 + team.draws},
         ),
       };
+    /*case actionTypes.ADD_MATCH_TO_HISTORY:
+      return {
+        ...state,
+      }*/
     default:
       return state;
   }

@@ -36,4 +36,15 @@ export const concludeMatch = () => {
   }
 }
 
+export const addMatchToHistory = (teamOne, teamTwo, results) => {
+  return {
+    type: actionTypes.ADD_MATCH_TO_HISTORY,
+    payload: {
+      teamOne: teamOne,
+      teamTwo: teamTwo,
+      results: results,
+    }
+  }
+}
+
 // ---- Actions for playerReducer ---- //

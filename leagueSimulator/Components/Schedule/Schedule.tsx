@@ -9,8 +9,27 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
+import RoundRobinchedule from './RoundRobinSchedule';
 
-const Schedule = ({week}: number, {match}: number) => {
+const images = [
+  require('../../Images/abersinnfv-logo.png'),
+  require('../../Images/dijleon-big-logo.png'),
+  require('../../Images/kveciai-logo.png'),
+  require('../../Images/sanvisenze-logo.png'),
+  require('../../Images/atleticoledilla-logo.png'),
+  require('../../Images/newfordcity-logo.png'),
+  require('../../Images/grezztalo-logo.png'),
+  require('../../Images/hunedatku-logo.png'),
+  require('../../Images/syktva-logo.png'),
+  require('../../Images/trikadona-logo.png'),
+];
+
+const Schedule = ({week, match, teams}) => {
+  const matchups = [
+    teams.find(team => team.id == 1),
+    teams.find(team => team.id == 2),
+  ];
+
   return (
     <SafeAreaView style={styles.background}>
       <View style={styles.weekView}>
@@ -22,6 +41,8 @@ const Schedule = ({week}: number, {match}: number) => {
       <ScrollView>
         <View style={styles.matchView}>
           <Text>Match 1</Text>
+          <Image source={images[matchups[0].bigIconIndex]} />
+          <Image source={images[matchups[1].bigIconIndex]} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -30,6 +51,7 @@ const Schedule = ({week}: number, {match}: number) => {
 
 const mapStateToProps = state => {
   return {
+    teams: state.teamReducer.teams,
     week: state.scheduleReducer.currentRound,
     match: state.scheduleReducer.currentMatch,
   };
