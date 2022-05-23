@@ -26,18 +26,33 @@ const images = [
 
 const Schedule = ({week, match, teams}) => {
   const matchups = [
-    teams.find(team => team.id === RoundRobinchedule(week, match)[0][0]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[0][1]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[1][0]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[1][1]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[2][0]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[2][1]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[3][0]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[3][1]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[4][0]),
-    teams.find(team => team.id === RoundRobinchedule(week, match)[4][1]),
+    [
+      teams.find(team => team.id === RoundRobinchedule(week, match)[0][0]),
+      teams.find(team => team.id === RoundRobinchedule(week, match)[0][1]),
+    ],
+    [
+      teams.find(team => team.id === RoundRobinchedule(week, match)[1][0]),
+      teams.find(team => team.id === RoundRobinchedule(week, match)[1][1]),
+    ],
+    [
+      teams.find(team => team.id === RoundRobinchedule(week, match)[2][0]),
+      teams.find(team => team.id === RoundRobinchedule(week, match)[2][1]),
+    ],
+    [
+      teams.find(team => team.id === RoundRobinchedule(week, match)[3][0]),
+      teams.find(team => team.id === RoundRobinchedule(week, match)[3][1]),
+    ],
+    [
+      teams.find(team => team.id === RoundRobinchedule(week, match)[4][0]),
+      teams.find(team => team.id === RoundRobinchedule(week, match)[4][1]),
+    ],
   ];
 
+  const [counter, setCount] = useState(0);
+  function getMatchNumber(): number{
+    setCount(counter + 1);
+    return counter;
+  }
   return (
     <SafeAreaView style={styles.background}>
       <View style={styles.weekView}>
@@ -47,24 +62,26 @@ const Schedule = ({week, match, teams}) => {
       </View>
       <View style={styles.horizontalLine} />
       <ScrollView>
-        <View style={styles.matchView}>
-          <Text style={styles.matchText}>Match 1</Text>
-          <View style={styles.matchContentView}>
-            <View style={styles.imageSize}>
-              <Image
-                source={images[matchups[0].bigIconIndex]}
-                style={styles.imageAdjuster}
-              />
-            </View>
-            <Text style={styles.dash}>-</Text>
-            <View style={styles.imageSize}>
-              <Image
-                source={images[matchups[1].bigIconIndex]}
-                style={styles.imageAdjuster}
-              />
+        {matchups.map((theMatchups, index) => (
+          <View style={styles.matchView}>
+            <Text style={styles.matchText}>Match {index + 1}</Text>
+            <View style={styles.matchContentView}>
+              <View style={styles.imageSize}>
+                <Image
+                  source={images[theMatchups[0].bigIconIndex]}
+                  style={styles.imageAdjuster}
+                />
+              </View>
+              <Text style={styles.dash}>-</Text>
+              <View style={styles.imageSize}>
+                <Image
+                  source={images[theMatchups[1].bigIconIndex]}
+                  style={styles.imageAdjuster}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -83,23 +100,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Schedule);
-
-/* <View style={styles.matchView}>
-          <Text style={styles.matchText}>Match 1</Text>
-          <View style={styles.matchContentView}>
-            <View style={styles.imageSize}>
-              <Image
-                source={images[matchups[0].bigIconIndex]}
-                style={styles.imageAdjuster}
-              />
-            </View>
-            <Text style={styles.dash}>-</Text>
-            <View style={styles.imageSize}>
-              <Image
-                source={images[matchups[1].bigIconIndex]}
-                style={styles.imageAdjuster}
-              />
-            </View>
-          </View>
-        </View>
-        {matchups.map()}*/
