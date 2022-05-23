@@ -24,77 +24,53 @@ function RoundRobinSchedule(currentRound: number, currentMatch: number) {
       [3, 4],
     ];
   } else if (currentRound == 4) {
-    if (currentMatch == 1) {
-      return [1, 7];
-    } else if (currentMatch == 2) {
-      return [8, 6];
-    } else if (currentMatch == 3) {
-      return [9, 5];
-    } else if (currentMatch == 4) {
-      return [10, 4];
-    } else if (currentMatch == 5) {
-      return [2, 3];
-    }
+    return [
+      [1, 7],
+      [8, 6],
+      [9, 5],
+      [10, 4],
+      [2, 3],
+    ];
   } else if (currentRound == 5) {
-    if (currentMatch == 1) {
-      return [1, 6];
-    } else if (currentMatch == 2) {
-      return [7, 5];
-    } else if (currentMatch == 3) {
-      return [8, 4];
-    } else if (currentMatch == 4) {
-      return [9, 3];
-    } else if (currentMatch == 5) {
-      return [10, 2];
-    }
+    return [
+      [1, 6],
+      [7, 5],
+      [8, 4],
+      [9, 3],
+      [10, 2],
+    ];
   } else if (currentRound == 6) {
-    if (currentMatch == 1) {
-      return [1, 5];
-    } else if (currentMatch == 2) {
-      return [6, 4];
-    } else if (currentMatch == 3) {
-      return [7, 3];
-    } else if (currentMatch == 4) {
-      return [8, 2];
-    } else if (currentMatch == 5) {
-      return [9, 10];
-    }
+    return [
+      [1, 5],
+      [6, 4],
+      [7, 3],
+      [8, 2],
+      [9, 10],
+    ];
   } else if (currentRound == 7) {
-    if (currentMatch == 1) {
-      return [1, 4];
-    } else if (currentMatch == 2) {
-      return [5, 3];
-    } else if (currentMatch == 3) {
-      return [6, 2];
-    } else if (currentMatch == 4) {
-      return [7, 10];
-    } else if (currentMatch == 5) {
-      return [8, 9];
-    }
+    return [
+      [1, 4],
+      [5, 3],
+      [6, 2],
+      [7, 10],
+      [8, 9],
+    ];
   } else if (currentRound == 8) {
-    if (currentMatch == 1) {
-      return [1, 3];
-    } else if (currentMatch == 2) {
-      return [4, 2];
-    } else if (currentMatch == 3) {
-      return [5, 10];
-    } else if (currentMatch == 4) {
-      return [6, 9];
-    } else if (currentMatch == 5) {
-      return [7, 8];
-    }
+    return [
+      [1, 3],
+      [4, 2],
+      [5, 10],
+      [6, 9],
+      [7, 8],
+    ];
   } else if (currentRound == 9) {
-    if (currentMatch == 1) {
-      return [1, 2];
-    } else if (currentMatch == 2) {
-      return [3, 10];
-    } else if (currentMatch == 3) {
-      return [4, 9];
-    } else if (currentMatch == 4) {
-      return [5, 8];
-    } else if (currentMatch == 5) {
-      return [6, 7];
-    }
+    return [
+      [1, 2],
+      [3, 10],
+      [4, 9],
+      [5, 8],
+      [6, 7],
+    ];
   }
   return [];
 }

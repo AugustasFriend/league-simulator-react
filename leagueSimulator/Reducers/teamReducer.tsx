@@ -13,6 +13,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 3,
@@ -37,6 +39,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 4,
@@ -49,6 +52,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 5,
@@ -61,6 +65,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 6,
@@ -73,6 +78,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 7,
@@ -85,6 +91,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 8,
@@ -97,6 +104,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 9,
@@ -109,6 +117,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
     {
       id: 10,
@@ -121,6 +130,7 @@ const initialState = {
       points: 0,
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
+      recentOutcome: 0,
     },
   ],
 };
@@ -136,9 +146,9 @@ const teamReducer = (state = initialState, action) => {
           ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamOne.id
-              ? {...team, wins: team.wins + 1}
+              ? {...team, wins: team.wins + 1, recentOutcome: 1}
               : team.id == action.payload.teamTwo.id
-              ? {...team, losses: team.losses + 1}
+              ? {...team, losses: team.losses + 1, recentOutcome: -1}
               : team,
           ),
         };
@@ -150,9 +160,9 @@ const teamReducer = (state = initialState, action) => {
           ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamTwo.id
-              ? {...team, wins: team.wins + 1}
+              ? {...team, wins: team.wins + 1, recentOutcome: 1}
               : team.id == action.payload.teamOne.id
-              ? {...team, losses: team.losses + 1}
+              ? {...team, losses: team.losses + 1, recentOutcome: -1}
               : team,
           ),
         };
@@ -161,13 +171,13 @@ const teamReducer = (state = initialState, action) => {
           ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamTwo.id
-              ? {...team, draws: team.draws + 1}
+              ? {...team, draws: team.draws + 1, recentOutcome: 0}
               : team.id == action.payload.teamOne.id
-              ? {...team, draws: team.draws + 1}
+              ? {...team, draws: team.draws + 1, recentOutcome: 0}
               : team,
           ),
         };
-      };
+      }
     case actionTypes.CALC_POINTS:
       return {
         ...state,
@@ -177,10 +187,33 @@ const teamReducer = (state = initialState, action) => {
             : {...team, points: team.wins * 3 + team.draws},
         ),
       };
-    /*case actionTypes.ADD_MATCH_TO_HISTORY:
-      return {
-        ...state,
-      }*/
+    case actionTypes.ADD_MATCH_TO_HISTORY:
+      console.log(action.payload.teamOne.matchHistory);
+      if (action.payload.results == 0) {
+        return {
+          ...state,
+          teams: state.teams.map(team =>
+            team.id == action.payload.teamOne.id
+              ? {
+                  ...team,
+                  matchHistory: {
+                    name: action.payload.teamTwo.name,
+                    outcome: '0',
+                  },
+                }
+              : team.id == action.payload.teamTwo.id
+              ? {
+                  ...team,
+                  matchHistory: {
+                    name: action.payload.teamOne.name,
+                    outcome: '0',
+                  },
+                }
+              : team,
+          ),
+        };
+      }
+      return {...state};
     default:
       return state;
   }

@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
+import {addMatchToHistory} from '../../Actions/Actions';
 import MatchResults from '../MatchResults/MatchResults';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
@@ -37,6 +38,7 @@ const Home = ({
   calcResults,
   calcPoints,
   concludeMatch,
+  addMatchToHistory,
 }) => {
   const teamOne = teams.find(
     team => team.id === RoundRobinFormat(currentRound, currentMatch)[0],
@@ -100,6 +102,15 @@ const Home = ({
                 calcResults(teamOne, teamTwo),
                   calcPoints(),
                   concludeMatch(),
+                  addMatchToHistory(
+                    teamOne,
+                    teamTwo,
+                    teamOne.recentOutcome == 0
+                      ? 0
+                      : teamOne.recentOutcome == 1
+                      ? 1
+                      : -1,
+                  ),
                   setModalVisible(!modalVisible);
               }}>
               <Text style={styles.buttonText}>Watch!</Text>
@@ -125,6 +136,8 @@ const mapDispatchToProps = dispatch => {
     calcResults: (teamOne, teamTwo) => dispatch(calcResults(teamOne, teamTwo)),
     calcPoints: () => dispatch(calcPoints()),
     concludeMatch: () => dispatch(concludeMatch()),
+    addMatchToHistory: (teamOne, teamTwo, results) =>
+      dispatch(addMatchToHistory(teamOne, teamTwo, results)),
   };
 };
 
