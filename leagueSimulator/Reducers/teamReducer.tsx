@@ -1,4 +1,5 @@
 import * as actionTypes from '../Constants';
+import configureStore from '../Store/configureStore';
 
 const initialState = {
   teams: [
@@ -14,6 +15,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 2,
@@ -27,6 +29,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 3,
@@ -40,6 +43,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 4,
@@ -53,6 +57,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 5,
@@ -66,6 +71,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 6,
@@ -79,6 +85,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 7,
@@ -92,6 +99,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 8,
@@ -105,6 +113,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 9,
@@ -118,6 +127,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
     {
       id: 10,
@@ -131,6 +141,7 @@ const initialState = {
       skill: 5,
       matchHistory: [{name: 'team', outcome: '1'}],
       recentOutcome: 0,
+      players: {},
     },
   ],
 };
@@ -196,24 +207,27 @@ const teamReducer = (state = initialState, action) => {
             team.id == action.payload.teamOne.id
               ? {
                   ...team,
-                  matchHistory: {
-                    name: action.payload.teamTwo.name,
-                    outcome: '0',
-                  },
+                  matchHistory: [
+                    ...team.matchHistory,
+                    action.payload.teamOne.name,
+                  ],
                 }
               : team.id == action.payload.teamTwo.id
               ? {
                   ...team,
-                  matchHistory: {
-                    name: action.payload.teamOne.name,
-                    outcome: '0',
-                  },
+                  matchHistory: [
+                    ...team.matchHistory,
+                    action.payload.teamOne.name,
+                  ],
                 }
               : team,
           ),
         };
       }
       return {...state};
+    case actionTypes.LOAD_PLAYERS_TO_TEAMS:
+      return {...state};
+    //teams: state.teams.map(team => team.players.)};
     default:
       return state;
   }
