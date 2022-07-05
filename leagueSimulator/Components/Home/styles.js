@@ -62,6 +62,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   backButtonView: {},
+
+  // --- matchHistory styles ---
+  historyText: {
+    fontSize: 20,
+    fontFamily: 'Montserrat',
+    color: 'white',
+  },
+  historyView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  matchHistoryDivider:{
+    marginLeft: '15%',
+    marginRight: '15%',
+  },
 });
 
 export default styles;

@@ -16,6 +16,7 @@ import {addMatchToHistory} from '../../Actions/Actions';
 import MatchResults from '../MatchResults/MatchResults';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
+import MatchHistory from './matchHistory';
 
 const images = [
   require('../../Images/abersinnfv-logo.png'),
@@ -103,6 +104,11 @@ const Home = ({
               {teamTwo.wins}W - {teamTwo.draws}D - {teamTwo.losses}L
             </Text>
           </View>
+        </View>
+        <View style={styles.historyView}>
+          <MatchHistory team={teamOne} />
+          <View style={styles.matchHistoryDivider} />
+          <MatchHistory team={teamTwo} />
         </View>
         <View style={styles.HomeViewTeamContainer}>
           {!playoffs && (
