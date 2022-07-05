@@ -14,11 +14,14 @@ import styles from './styles';
 const matchHistory = ({team}) => {
   return (
     <View>
-      {team.matchHistory.map((match, index) => (
-        <Text style={styles.historyText}>
-          {match[0]} {match[1] == 1 ? 'W' : match[1] == -1 ? 'L' : 'D'}
-        </Text>
-      ))}
+      {team.matchHistory
+        .slice(0, 3)
+        .reverse()
+        .map((match, index) => (
+          <Text style={styles.historyText}>
+            {match[0]} {match[1] == 1 ? 'W' : match[1] == -1 ? 'L' : 'D'}
+          </Text>
+        ))}
     </View>
   );
 };
