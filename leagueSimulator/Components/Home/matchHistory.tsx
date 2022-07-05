@@ -15,8 +15,9 @@ const matchHistory = ({team}) => {
   return (
     <View>
       {team.matchHistory
-        .slice(0, 3)
+        .slice(0)
         .reverse()
+        .slice(0, 3)
         .map((match, index) => (
           <Text style={styles.historyText}>
             {match[0]} {match[1] == 1 ? 'W' : match[1] == -1 ? 'L' : 'D'}
