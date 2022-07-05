@@ -65,7 +65,17 @@ const Home = ({
               <TouchableOpacity
                 style={styles.watchButton}
                 onPress={() => {
-                  setModalVisible(!modalVisible);
+                  setModalVisible(!modalVisible),
+                    concludeMatch(),
+                    addMatchToHistory(
+                      teamOne,
+                      teamTwo,
+                      teamOne.recentOutcome == 0
+                        ? 0
+                        : teamOne.recentOutcome == 1
+                        ? 1
+                        : -1,
+                    );
                 }}>
                 <Text style={styles.buttonText}>Back</Text>
               </TouchableOpacity>
@@ -101,16 +111,6 @@ const Home = ({
               onPress={() => {
                 calcResults(teamOne, teamTwo),
                   calcPoints(),
-                  concludeMatch(),
-                  addMatchToHistory(
-                    teamOne,
-                    teamTwo,
-                    teamOne.recentOutcome == 0
-                      ? 0
-                      : teamOne.recentOutcome == 1
-                      ? 1
-                      : -1,
-                  ),
                   setModalVisible(!modalVisible);
               }}>
               <Text style={styles.buttonText}>Watch!</Text>

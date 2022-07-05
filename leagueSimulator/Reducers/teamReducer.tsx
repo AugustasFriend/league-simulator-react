@@ -13,7 +13,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -27,7 +27,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -41,7 +41,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -55,7 +55,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -69,7 +69,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -83,7 +83,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -97,7 +97,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -111,7 +111,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -125,7 +125,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -139,7 +139,7 @@ const initialState = {
       draws: 0,
       points: 0,
       skill: 5,
-      matchHistory: [{name: 'team', outcome: '1'}],
+      matchHistory: [],
       recentOutcome: 0,
       players: {},
     },
@@ -194,11 +194,12 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         teams: state.teams.map(team =>
           team.name == ''
-            ? console.log('ayo')
+            ? console.log('ao')
             : {...team, points: team.wins * 3 + team.draws},
         ),
       };
     case actionTypes.ADD_MATCH_TO_HISTORY:
+      console.log(action.payload.teamOne.recentOutcome);
       console.log(action.payload.teamOne.matchHistory);
       if (action.payload.results == 0) {
         return {
@@ -209,7 +210,7 @@ const teamReducer = (state = initialState, action) => {
                   ...team,
                   matchHistory: [
                     ...team.matchHistory,
-                    action.payload.teamOne.name,
+                    [action.payload.teamTwo.name, '0'],
                   ],
                 }
               : team.id == action.payload.teamTwo.id
@@ -217,14 +218,58 @@ const teamReducer = (state = initialState, action) => {
                   ...team,
                   matchHistory: [
                     ...team.matchHistory,
-                    action.payload.teamOne.name,
+                    [action.payload.teamOne.name, '0'],
+                  ],
+                }
+              : team,
+          ),
+        };
+      } else if (action.payload.results == 1) {
+        return {
+          ...state,
+          teams: state.teams.map(team =>
+            team.id == action.payload.teamOne.id
+              ? {
+                  ...team,
+                  matchHistory: [
+                    ...team.matchHistory,
+                    [action.payload.teamTwo.name, '1'],
+                  ],
+                }
+              : team.id == action.payload.teamTwo.id
+              ? {
+                  ...team,
+                  matchHistory: [
+                    ...team.matchHistory,
+                    [action.payload.teamOne.name, '-1'],
+                  ],
+                }
+              : team,
+          ),
+        };
+      } else {
+        return {...state,
+          teams: state.teams.map(team =>
+            team.id == action.payload.teamOne.id
+              ? {
+                  ...team,
+                  matchHistory: [
+                    ...team.matchHistory,
+                    [action.payload.teamTwo.name, '-1'],
+                  ],
+                }
+              : team.id == action.payload.teamTwo.id
+              ? {
+                  ...team,
+                  matchHistory: [
+                    ...team.matchHistory,
+                    [action.payload.teamOne.name, '1'],
                   ],
                 }
               : team,
           ),
         };
       }
-      return {...state};
     case actionTypes.LOAD_PLAYERS_TO_TEAMS:
       return {...state};
     //teams: state.teams.map(team => team.players.)};
