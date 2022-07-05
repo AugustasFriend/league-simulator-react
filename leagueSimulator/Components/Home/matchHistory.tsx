@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+import {Text, View} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
 
@@ -30,9 +22,6 @@ const matchHistory = ({team}) => {
 const mapStateToProps = state => {
   return {
     teams: state.teamReducer.teams,
-    currentRound: state.scheduleReducer.currentRound,
-    currentMatch: state.scheduleReducer.currentMatch,
-    playoffs: state.scheduleReducer.playoffs,
   };
 };
 

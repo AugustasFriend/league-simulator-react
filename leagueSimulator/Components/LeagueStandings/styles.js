@@ -70,6 +70,12 @@ const styles = StyleSheet.create({
   scrollView: {
     marginTop: '2%',
   },
+  numberText:{
+    fontSize: 25,
+    color: 'white',
+    textAlignVertical: 'center',
+    marginRight: '2%'
+  }
 });
 
 export default styles;
