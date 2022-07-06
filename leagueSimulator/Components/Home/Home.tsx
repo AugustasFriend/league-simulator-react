@@ -17,6 +17,7 @@ import MatchResults from '../MatchResults/MatchResults';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
 import MatchHistory from './matchHistory';
+import TeamInfo from './TeamInfo';
 
 const images = [
   require('../../Images/abersinnfv-logo.png'),
@@ -89,32 +90,11 @@ const Home = ({
           <Text style={styles.bigtext}>Upcoming Match:</Text>
         </View>
         <View style={styles.HomeViewTeamContainer}>
-          <View style={styles.teamView}>
-            <Image source={images[teamOne.bigIconIndex]} />
-            <Text style={styles.teamOneText}>
-              {teamOne.wins}
-              <Text style={{color: 'green'}}>W</Text> - {teamOne.draws}D -{' '}
-              {teamOne.losses}
-              <Text style={{color: '#e61919'}}>L</Text>
-            </Text>
-          </View>
+          <TeamInfo team={teamOne} />
           <View>
             <Text style={styles.dash}>-</Text>
           </View>
-          <View style={styles.teamView}>
-            <Image source={images[teamTwo.bigIconIndex]} />
-            <Text style={styles.teamTwoText}>
-              {teamTwo.wins}
-              <Text style={{color: 'green'}}>W</Text> - {teamTwo.draws}D -{' '}
-              {teamTwo.losses}
-              <Text style={{color: '#e61919'}}>L</Text>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.historyView}>
-          <MatchHistory team={teamOne} />
-          <View style={styles.matchHistoryDivider} />
-          <MatchHistory team={teamTwo} />
+          <TeamInfo team={teamTwo} />
         </View>
         <View style={styles.HomeViewTeamContainer}>
           {!playoffs && (

@@ -18,7 +18,10 @@ const images = [
 
 const matchHistory = ({team, teams}) => {
   return (
-    <View style={{marginTop: '4%'}}>
+    <View style={styles.matchHistoryContainer}>
+      {team.matchHistory.length === 0 && (
+        <Text style={{color: 'white', fontSize: 14}}>No matches played</Text>
+      )}
       {team.matchHistory
         .slice(0)
         .reverse()
@@ -45,6 +48,7 @@ const matchHistory = ({team, teams}) => {
               }>
               {match[1] == 1 ? 'W' : match[1] == -1 ? 'L' : 'D'}
             </Text>
+            <View />
           </View>
         ))}
     </View>

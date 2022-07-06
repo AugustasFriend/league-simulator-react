@@ -86,10 +86,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  matchHistoryDivider:{
-    marginLeft: '20%',
-    marginRight: '20%',
-  },
   imageSize: {
     width: 45,
     height: 45,
@@ -101,6 +97,14 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginLeft: '5%',
   },
+  matchHistoryContainer: {
+    marginTop: '4%',
+    backgroundColor: '#2E2C2C',
+    borderRadius: 5,
+    borderColor: 'grey',
+    borderWidth: 1,
+    padding: '2%',
+  }
 });
 
 export default styles;
