@@ -92,7 +92,10 @@ const Home = ({
           <View style={styles.teamView}>
             <Image source={images[teamOne.bigIconIndex]} />
             <Text style={styles.teamOneText}>
-              {teamOne.wins}W - {teamOne.draws}D - {teamOne.losses}L
+              {teamOne.wins}
+              <Text style={{color: 'green'}}>W</Text> - {teamOne.draws}D -{' '}
+              {teamOne.losses}
+              <Text style={{color: '#e61919'}}>L</Text>
             </Text>
           </View>
           <View>
@@ -101,7 +104,10 @@ const Home = ({
           <View style={styles.teamView}>
             <Image source={images[teamTwo.bigIconIndex]} />
             <Text style={styles.teamTwoText}>
-              {teamTwo.wins}W - {teamTwo.draws}D - {teamTwo.losses}L
+              {teamTwo.wins}
+              <Text style={{color: 'green'}}>W</Text> - {teamTwo.draws}D -{' '}
+              {teamTwo.losses}
+              <Text style={{color: '#e61919'}}>L</Text>
             </Text>
           </View>
         </View>

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     color: 'white',
     alignSelf: 'center',
-    marginTop: '20%',
+    marginTop: '12%',
   },
   dash: {
     fontSize: 100,
@@ -64,18 +64,42 @@ const styles = StyleSheet.create({
   backButtonView: {},
 
   // --- matchHistory styles ---
-  historyText: {
-    fontSize: 20,
+  historyTextRed: {
+    fontSize: 30,
+    fontFamily: 'Montserrat',
+    color: '#e61919',
+    textAlignVertical: 'center',
+  },
+  historyTextWhite: {
+    fontSize: 30,
     fontFamily: 'Montserrat',
     color: 'white',
+    textAlignVertical: 'center',
+  },
+  historyTextGreen: {
+    fontSize: 30,
+    fontFamily: 'Montserrat',
+    color: 'green',
+    textAlignVertical: 'center',
   },
   historyView: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   matchHistoryDivider:{
-    marginLeft: '15%',
-    marginRight: '15%',
+    marginLeft: '20%',
+    marginRight: '20%',
+  },
+  imageSize: {
+    width: 45,
+    height: 45,
+  },
+  imageAdjuster: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'contain',
+    marginLeft: '5%',
   },
 });
 
