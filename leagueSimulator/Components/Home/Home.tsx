@@ -1,22 +1,14 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+import {SafeAreaView, Text, View, TouchableOpacity, Modal} from 'react-native';
 import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
 import {addMatchToHistory} from '../../Actions/Actions';
+import {loadPlayersToTeams} from '../../Actions/Actions';
 import MatchResults from '../MatchResults/MatchResults';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
-import MatchHistory from './matchHistory';
 import TeamInfo from './TeamInfo';
 
 const images = [
@@ -41,6 +33,7 @@ const Home = ({
   calcPoints,
   concludeMatch,
   addMatchToHistory,
+  loadPlayersToTeams,
 }) => {
   const teamOne = teams.find(
     team => team.id === RoundRobinFormat(currentRound, currentMatch)[0],
@@ -130,6 +123,7 @@ const mapDispatchToProps = dispatch => {
     concludeMatch: () => dispatch(concludeMatch()),
     addMatchToHistory: (teamOne, teamTwo, results) =>
       dispatch(addMatchToHistory(teamOne, teamTwo, results)),
+    loadPlayersToTeams: () => dispatch(loadPlayersToTeams()),
   };
 };
 

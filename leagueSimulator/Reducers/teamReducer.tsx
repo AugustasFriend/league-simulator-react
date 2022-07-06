@@ -1,5 +1,6 @@
+import { AppState } from 'react-native';
 import * as actionTypes from '../Constants';
-import configureStore from '../Store/configureStore';
+import {store} from '../Store/configureStore';
 
 const initialState = {
   teams: [
@@ -248,7 +249,8 @@ const teamReducer = (state = initialState, action) => {
           ),
         };
       } else {
-        return {...state,
+        return {
+          ...state,
           teams: state.teams.map(team =>
             team.id == action.payload.teamOne.id
               ? {
@@ -271,8 +273,10 @@ const teamReducer = (state = initialState, action) => {
         };
       }
     case actionTypes.LOAD_PLAYERS_TO_TEAMS:
+      //const players = store.getState().playerReducer.players;
+      //console.log(players);
       return {...state};
-    //teams: state.teams.map(team => team.players.)};
+    //teams: state.teams.map(team => configureStore.state.playerReducer.players}
     default:
       return state;
   }

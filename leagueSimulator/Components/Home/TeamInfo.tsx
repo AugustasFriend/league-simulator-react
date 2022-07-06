@@ -1,13 +1,5 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
 

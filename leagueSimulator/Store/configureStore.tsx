@@ -1,11 +1,16 @@
 import {createStore, combineReducers} from 'redux';
-
 import teamReducer from '../Reducers/teamReducer';
+import playerReducer from '../Reducers/playerReducer';
+import scheduleReducer from '../Reducers/scheduleReducer';
 
-const rootReducer = combineReducers({wins: teamReducer});
+const rootReducer = combineReducers({
+  teamReducer,
+  playerReducer,
+  scheduleReducer,
+});
 
-const configureStore = () => {
+const store = () => {
   return createStore(rootReducer);
 };
 
-export default configureStore;
+export default store;
