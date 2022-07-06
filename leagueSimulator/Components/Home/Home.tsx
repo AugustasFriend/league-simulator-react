@@ -85,7 +85,7 @@ const Home = ({
           </View>
         </View>
       </Modal>
-      <ScrollView>
+      <View style={styles.MainHomeContainer}>
         <View style={styles.bigtext}>
           <Text style={styles.bigtext}>Upcoming Match:</Text>
         </View>
@@ -96,7 +96,7 @@ const Home = ({
           </View>
           <TeamInfo team={teamTwo} />
         </View>
-        <View style={styles.HomeViewTeamContainer}>
+        <View style={styles.HomeViewButtonContainer}>
           {!playoffs && (
             <TouchableOpacity
               style={styles.watchButton}
@@ -109,7 +109,7 @@ const Home = ({
             </TouchableOpacity>
           )}
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

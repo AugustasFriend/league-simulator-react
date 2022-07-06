@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     alignItems: 'center', //Centered vertically
     flex: 1,
   },
+  MainHomeContainer: {
+    flex: 1,
+  },
   teamOneText: {
     fontSize: 30,
     color: 'white',
@@ -33,6 +36,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     marginTop: '10%',
+  },
+  HomeViewButtonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: '15%',
+    alignSelf: 'center',
   },
   watchButton: {
     width: 200,
