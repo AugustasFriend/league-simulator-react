@@ -1,6 +1,6 @@
 import { AppState } from 'react-native';
 import * as actionTypes from '../Constants';
-import {store} from '../Store/configureStore';
+import configureStore from '../Store/configureStore';
 
 const initialState = {
   teams: [
@@ -273,8 +273,9 @@ const teamReducer = (state = initialState, action) => {
         };
       }
     case actionTypes.LOAD_PLAYERS_TO_TEAMS:
-      //const players = store.getState().playerReducer.players;
-      //console.log(players);
+      const store = configureStore();
+      const players = store.getState().playerReducer.Players;
+      console.log(players);
       return {...state};
     //teams: state.teams.map(team => configureStore.state.playerReducer.players}
     default:

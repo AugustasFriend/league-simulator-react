@@ -9,8 +9,8 @@ const rootReducer = combineReducers({
   scheduleReducer,
 });
 
-const store = () => {
+const configureStore = () => {
   return createStore(rootReducer);
 };
 
-export default store;
+export default configureStore;

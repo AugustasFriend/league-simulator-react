@@ -70,9 +70,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000AA',
     justifyContent: 'center',
   },
-  backButtonView: {},
 
-  // --- matchHistory styles ---
+  // --- matchHistory styles --- //
   historyTextRed: {
     fontSize: 30,
     fontFamily: 'Montserrat',
@@ -113,7 +112,9 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     padding: '2%',
-  }
+  },
+  // --- FillTeamsButton styles ---
+  
 });
 
 export default styles;

@@ -12,11 +12,12 @@ import allReducer from './Reducers/index.tsx';
 
 AppRegistry.registerComponent(appName, () => App);
 
-const store = createStore(
+/*const store = createStore(
   allReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+);*/
 
+const store = configureStore();
 const RNRedux = () => (
   <Provider store={store}>
     <App />

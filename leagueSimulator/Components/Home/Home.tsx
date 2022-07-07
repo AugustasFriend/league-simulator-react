@@ -7,22 +7,10 @@ import {concludeMatch} from '../../Actions/Actions';
 import {addMatchToHistory} from '../../Actions/Actions';
 import {loadPlayersToTeams} from '../../Actions/Actions';
 import MatchResults from '../MatchResults/MatchResults';
+import FillTeamsButton from './FillTeamsButton';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
 import TeamInfo from './TeamInfo';
-
-const images = [
-  require('../../Images/abersinnfv-logo.png'),
-  require('../../Images/dijleon-big-logo.png'),
-  require('../../Images/kveciai-logo.png'),
-  require('../../Images/sanvisenze-logo.png'),
-  require('../../Images/atleticoledilla-logo.png'),
-  require('../../Images/newfordcity-logo.png'),
-  require('../../Images/grezztalo-logo.png'),
-  require('../../Images/hunedatku-logo.png'),
-  require('../../Images/syktva-logo.png'),
-  require('../../Images/trikadona-logo.png'),
-];
 
 const Home = ({
   teams,
@@ -46,6 +34,7 @@ const Home = ({
 
   return (
     <SafeAreaView style={styles.background}>
+      <FillTeamsButton />
       <Modal
         animationType="slide"
         transparent={true}
@@ -70,7 +59,8 @@ const Home = ({
                         : teamOne.recentOutcome == 1
                         ? 1
                         : -1,
-                    );
+                    ),
+                    loadPlayersToTeams();
                 }}>
                 <Text style={styles.buttonText}>Back</Text>
               </TouchableOpacity>
