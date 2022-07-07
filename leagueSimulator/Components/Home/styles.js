@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     color: 'white',
     alignSelf: 'center',
-    marginTop: '12%',
+    marginTop: '5%',
   },
   dash: {
     fontSize: 100,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginBottom: '15%',
     alignSelf: 'center',
   },
-  watchButton: {
+  button: {
     width: 200,
     height: 60,
     backgroundColor: '#333333',
@@ -114,7 +114,10 @@ const styles = StyleSheet.create({
     padding: '2%',
   },
   // --- FillTeamsButton styles ---
-  
+  fillButtonContainer: {
+    alignSelf: 'center',
+    marginTop: '7%',
+  },
 });
 
 export default styles;

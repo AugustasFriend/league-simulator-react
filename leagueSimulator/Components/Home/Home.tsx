@@ -82,7 +82,7 @@ const Home = ({
         <View style={styles.HomeViewButtonContainer}>
           {!playoffs && (
             <TouchableOpacity
-              style={styles.watchButton}
+              style={styles.button}
               onPress={() => {
                 calcResults(teamOne, teamTwo),
                   calcPoints(),
