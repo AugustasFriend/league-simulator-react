@@ -275,15 +275,11 @@ const teamReducer = (state = initialState, action) => {
     case actionTypes.LOAD_PLAYERS_TO_TEAMS:
       const store = configureStore();
       const players = store.getState().playerReducer.Players;
-      console.log(state.teams[0].players);
+      console.log(state.teams[9].players);
       var counter = 0;
       function getFivePlayers() {
         const countCopy = counter;
-        //counter = counter + 5;
-        /*if (countCopy + 4 > players.length) {
-          counter = 0;
-          return console.log("shit don't work");
-        } else {*/
+        counter = counter + 5;
         return [
           players[countCopy],
           players[countCopy + 1],
