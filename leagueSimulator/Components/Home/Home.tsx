@@ -5,7 +5,6 @@ import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
 import {addMatchToHistory} from '../../Actions/Actions';
-import {loadPlayersToTeams} from '../../Actions/Actions';
 import MatchResults from '../MatchResults/MatchResults';
 import FillTeamsButton from './FillTeamsButton';
 import RoundRobinFormat from './RoundRobinFormat';
@@ -21,7 +20,6 @@ const Home = ({
   calcPoints,
   concludeMatch,
   addMatchToHistory,
-  loadPlayersToTeams,
 }) => {
   const teamOne = teams.find(
     team => team.id === RoundRobinFormat(currentRound, currentMatch)[0],
@@ -59,8 +57,7 @@ const Home = ({
                         : teamOne.recentOutcome == 1
                         ? 1
                         : -1,
-                    ),
-                    loadPlayersToTeams();
+                    );
                 }}>
                 <Text style={styles.buttonText}>Back</Text>
               </TouchableOpacity>
@@ -113,7 +110,6 @@ const mapDispatchToProps = dispatch => {
     concludeMatch: () => dispatch(concludeMatch()),
     addMatchToHistory: (teamOne, teamTwo, results) =>
       dispatch(addMatchToHistory(teamOne, teamTwo, results)),
-    loadPlayersToTeams: () => dispatch(loadPlayersToTeams()),
   };
 };
 

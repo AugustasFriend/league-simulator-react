@@ -1,4 +1,4 @@
-import { AppState } from 'react-native';
+import {AppState} from 'react-native';
 import * as actionTypes from '../Constants';
 import configureStore from '../Store/configureStore';
 
@@ -16,7 +16,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 4,
@@ -58,7 +58,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 6,
@@ -86,7 +86,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 7,
@@ -100,7 +100,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 8,
@@ -114,7 +114,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 9,
@@ -128,7 +128,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
     {
       id: 10,
@@ -142,7 +142,7 @@ const initialState = {
       skill: 5,
       matchHistory: [],
       recentOutcome: 0,
-      players: {},
+      players: [],
     },
   ],
 };
@@ -275,9 +275,37 @@ const teamReducer = (state = initialState, action) => {
     case actionTypes.LOAD_PLAYERS_TO_TEAMS:
       const store = configureStore();
       const players = store.getState().playerReducer.Players;
-      console.log(players);
-      return {...state};
-    //teams: state.teams.map(team => configureStore.state.playerReducer.players}
+      console.log(state.teams[0].players);
+      var counter = 0;
+      function getFivePlayers() {
+        const countCopy = counter;
+        //counter = counter + 5;
+        /*if (countCopy + 4 > players.length) {
+          counter = 0;
+          return console.log("shit don't work");
+        } else {*/
+        return [
+          players[countCopy],
+          players[countCopy + 1],
+          players[countCopy + 2],
+          players[countCopy + 3],
+          players[countCopy + 4],
+        ];
+      }
+      return {
+        ...state,
+        teams: state.teams.map(team =>
+          team.players.length !== 5
+            ? {
+                ...team,
+                players: getFivePlayers(),
+              }
+            : team,
+        ),
+      };
+    //teams: state.teams.map(team =>
+    //team.players.length !== 5 ? {team, players: getFivePlayers()} : team,
+    //),
     default:
       return state;
   }
