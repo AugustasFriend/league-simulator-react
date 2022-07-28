@@ -59,6 +59,11 @@ const TeamInfo = ({team, teams}) => {
             </View>
           ))}
       </View>
+      <View>
+        {team.players.map(player => (
+          <Text>{player.nameAbb}</Text>
+        ))}
+      </View>
     </View>
   );
 };

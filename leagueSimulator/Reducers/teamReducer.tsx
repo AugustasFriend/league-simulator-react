@@ -3,6 +3,7 @@ import * as actionTypes from '../Constants';
 import configureStore from '../Store/configureStore';
 
 const initialState = {
+  teamsFilled: false,
   teams: [
     {
       id: 1,
@@ -195,7 +196,7 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         teams: state.teams.map(team =>
           team.name == ''
-            ? console.log('ao')
+            ? team
             : {...team, points: team.wins * 3 + team.draws},
         ),
       };
@@ -275,6 +276,7 @@ const teamReducer = (state = initialState, action) => {
     case actionTypes.LOAD_PLAYERS_TO_TEAMS:
       const store = configureStore();
       const players = store.getState().playerReducer.Players;
+      shuffle(players);
       console.log(state.teams[9].players);
       var counter = 0;
       function getFivePlayers() {
@@ -288,8 +290,28 @@ const teamReducer = (state = initialState, action) => {
           players[countCopy + 4],
         ];
       }
+      function shuffle(array) {
+        let currentIndex = array.length,
+          randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex],
+            array[currentIndex],
+          ];
+        }
+
+        return array;
+      }
       return {
         ...state,
+        teamsFilled: true,
         teams: state.teams.map(team =>
           team.players.length !== 5
             ? {

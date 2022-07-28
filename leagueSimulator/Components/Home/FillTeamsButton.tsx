@@ -4,22 +4,27 @@ import {loadPlayersToTeams} from '../../Actions/Actions';
 import {connect} from 'react-redux';
 import styles from './styles';
 
-const FillTeamsButton = ({loadPlayersToTeams}) => {
-  return (
-    <View style={styles.fillButtonContainer}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          loadPlayersToTeams();
-        }}>
-        <Text style={styles.buttonText}>Fill Teams</Text>
-      </TouchableOpacity>
-    </View>
-  );
+const FillTeamsButton = ({loadPlayersToTeams, teamsFilled}) => {
+  if (!teamsFilled) {
+    return (
+      <View style={styles.fillButtonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            loadPlayersToTeams();
+          }}>
+          <Text style={styles.buttonText}>Fill Teams</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+  return null;
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    teamsFilled: state.teamReducer.teamsFilled,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
