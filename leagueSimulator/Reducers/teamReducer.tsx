@@ -1,3 +1,4 @@
+import {each} from 'immer/dist/internal';
 import {AppState} from 'react-native';
 import * as actionTypes from '../Constants';
 import configureStore from '../Store/configureStore';
@@ -149,12 +150,90 @@ const initialState = {
 };
 
 const teamReducer = (state = initialState, action) => {
+  function calcTeamDef(team) {
+    var defScore = 0;
+    for (var i = 0; i < 5; i++) {
+      defScore += team.players[i].defSkill;
+    }
+    defScore = defScore / 5;
+    return Math.floor(Math.random() * defScore);
+  }
+
+  function calcTeamMid(team) {
+    var midScore = 0;
+    for (var i = 0; i < 5; i++) {
+      midScore += team.players[i].midSkill;
+    }
+    midScore = midScore / 5;
+    return Math.floor(Math.random() * midScore);
+  }
+
+  function calcTeamAtk(team) {
+    var AtkScore = 0;
+    for (var i = 0; i < 5; i++) {
+      AtkScore += team.players[i].atkSkill;
+    }
+    AtkScore = AtkScore / 5;
+    return Math.floor(Math.random() * AtkScore);
+  }
+
+  function compareScores(calcTeamOne, calcTeamTwo) {
+    return calcTeamOne > calcTeamTwo ? 1 : calcTeamOne == calcTeamTwo ? 0 : -1;
+  }
+
   switch (action.type) {
     case actionTypes.CALC_RESULTS:
+      var teamOneAdvantages = 0;
+      var teamTwoAdvantages = 0;
       if (
-        Math.floor(Math.random() * action.payload.teamOne.skill) >
-        Math.floor(Math.random() * action.payload.teamTwo.skill)
+        compareScores(
+          calcTeamDef(action.payload.teamOne),
+          calcTeamDef(action.payload.teamTwo),
+        ) == 1
       ) {
+        teamOneAdvantages++;
+      } else if (
+        compareScores(
+          calcTeamDef(action.payload.teamOne),
+          calcTeamDef(action.payload.teamTwo),
+        ) == -1
+      ) {
+        teamTwoAdvantages++;
+      }
+
+      if (
+        compareScores(
+          calcTeamMid(action.payload.teamOne),
+          calcTeamMid(action.payload.teamTwo),
+        ) == 1
+      ) {
+        teamOneAdvantages++;
+      } else if (
+        compareScores(
+          calcTeamMid(action.payload.teamOne),
+          calcTeamMid(action.payload.teamTwo),
+        ) == -1
+      ) {
+        teamTwoAdvantages++;
+      }
+
+      if (
+        compareScores(
+          calcTeamAtk(action.payload.teamOne),
+          calcTeamAtk(action.payload.teamTwo),
+        ) == 1
+      ) {
+        teamOneAdvantages++;
+      } else if (
+        compareScores(
+          calcTeamAtk(action.payload.teamOne),
+          calcTeamAtk(action.payload.teamTwo),
+        ) == -1
+      ) {
+        teamTwoAdvantages++;
+      }
+      console.log(teamOneAdvantages + ' ' + teamTwoAdvantages);
+      if (teamOneAdvantages > teamTwoAdvantages) {
         return {
           ...state,
           teams: state.teams.map(team =>
@@ -165,10 +244,7 @@ const teamReducer = (state = initialState, action) => {
               : team,
           ),
         };
-      } else if (
-        Math.floor(Math.random() * action.payload.teamOne.skill) <
-        Math.floor(Math.random() * action.payload.teamTwo.skill)
-      ) {
+      } else if (teamTwoAdvantages > teamOneAdvantages) {
         return {
           ...state,
           teams: state.teams.map(team =>
@@ -201,8 +277,6 @@ const teamReducer = (state = initialState, action) => {
         ),
       };
     case actionTypes.ADD_MATCH_TO_HISTORY:
-      console.log(action.payload.teamOne.recentOutcome);
-      console.log(action.payload.teamOne.matchHistory);
       if (action.payload.results == 0) {
         return {
           ...state,
@@ -277,7 +351,6 @@ const teamReducer = (state = initialState, action) => {
       const store = configureStore();
       const players = store.getState().playerReducer.Players;
       shuffle(players);
-      console.log(state.teams[9].players);
       var counter = 0;
       function getFivePlayers() {
         const countCopy = counter;
