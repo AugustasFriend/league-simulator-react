@@ -10,13 +10,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     color: 'white',
     alignSelf: 'center',
-    marginTop: '20%',
+    marginTop: '5%',
   },
   dash: {
     fontSize: 100,
   },
   teamView: {
     alignItems: 'center', //Centered vertically
+    flex: 1,
+  },
+  MainHomeContainer: {
     flex: 1,
   },
   teamOneText: {
@@ -34,7 +37,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: '10%',
   },
-  watchButton: {
+  HomeViewButtonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: '15%',
+    alignSelf: 'center',
+  },
+  button: {
     width: 200,
     height: 60,
     backgroundColor: '#333333',
@@ -61,7 +70,54 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000AA',
     justifyContent: 'center',
   },
-  backButtonView: {},
+
+  // --- matchHistory styles --- //
+  historyTextRed: {
+    fontSize: 30,
+    fontFamily: 'Montserrat',
+    color: '#e61919',
+    textAlignVertical: 'center',
+  },
+  historyTextWhite: {
+    fontSize: 30,
+    fontFamily: 'Montserrat',
+    color: 'white',
+    textAlignVertical: 'center',
+  },
+  historyTextGreen: {
+    fontSize: 30,
+    fontFamily: 'Montserrat',
+    color: 'green',
+    textAlignVertical: 'center',
+  },
+  historyView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  imageSize: {
+    width: 45,
+    height: 45,
+  },
+  imageAdjuster: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'contain',
+    marginLeft: '5%',
+  },
+  matchHistoryContainer: {
+    marginTop: '4%',
+    backgroundColor: '#2E2C2C',
+    borderRadius: 5,
+    borderColor: 'grey',
+    borderWidth: 1,
+    padding: '2%',
+  },
+  // --- FillTeamsButton styles ---
+  fillButtonContainer: {
+    alignSelf: 'center',
+    marginTop: '7%',
+  },
 });
 
 export default styles;

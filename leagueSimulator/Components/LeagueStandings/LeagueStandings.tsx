@@ -45,9 +45,10 @@ const LeagueStandings = ({teams}) => {
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.scrollView}>
-        {teams.sort(compare).map(team => (
+        {teams.sort(compare).map((team, index) => (
           <View>
             <View style={styles.teamInfoContainer}>
+              <Text style={styles.numberText}> {index + 1}</Text>
               <View style={styles.imageSize}>
                 <Image
                   source={images[team.bigIconIndex]}

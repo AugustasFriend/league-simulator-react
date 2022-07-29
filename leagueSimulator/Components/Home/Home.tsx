@@ -1,34 +1,15 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+import {SafeAreaView, Text, View, TouchableOpacity, Modal} from 'react-native';
 import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
 import {addMatchToHistory} from '../../Actions/Actions';
 import MatchResults from '../MatchResults/MatchResults';
+import FillTeamsButton from './FillTeamsButton';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
-
-const images = [
-  require('../../Images/abersinnfv-logo.png'),
-  require('../../Images/dijleon-big-logo.png'),
-  require('../../Images/kveciai-logo.png'),
-  require('../../Images/sanvisenze-logo.png'),
-  require('../../Images/atleticoledilla-logo.png'),
-  require('../../Images/newfordcity-logo.png'),
-  require('../../Images/grezztalo-logo.png'),
-  require('../../Images/hunedatku-logo.png'),
-  require('../../Images/syktva-logo.png'),
-  require('../../Images/trikadona-logo.png'),
-];
+import TeamInfo from './TeamInfo';
 
 const Home = ({
   teams,
@@ -51,6 +32,7 @@ const Home = ({
 
   return (
     <SafeAreaView style={styles.background}>
+      <FillTeamsButton/>
       <Modal
         animationType="slide"
         transparent={true}
@@ -60,12 +42,22 @@ const Home = ({
         }}>
         <View style={styles.transparentModal}>
           <View style={styles.modalView}>
-            <MatchResults />
+            <MatchResults teamOne={teamOne} teamTwo={teamTwo} />
             <View style={styles.backButtonView}>
               <TouchableOpacity
-                style={styles.watchButton}
+                style={styles.button}
                 onPress={() => {
-                  setModalVisible(!modalVisible);
+                  setModalVisible(!modalVisible),
+                    concludeMatch(),
+                    addMatchToHistory(
+                      teamOne,
+                      teamTwo,
+                      teamOne.recentOutcome == 0
+                        ? 0
+                        : teamOne.recentOutcome == 1
+                        ? 1
+                        : -1,
+                    );
                 }}>
                 <Text style={styles.buttonText}>Back</Text>
               </TouchableOpacity>
@@ -73,51 +65,31 @@ const Home = ({
           </View>
         </View>
       </Modal>
-      <ScrollView>
+      <View style={styles.MainHomeContainer}>
         <View style={styles.bigtext}>
           <Text style={styles.bigtext}>Upcoming Match:</Text>
         </View>
         <View style={styles.HomeViewTeamContainer}>
-          <View style={styles.teamView}>
-            <Image source={images[teamOne.bigIconIndex]} />
-            <Text style={styles.teamOneText}>
-              {teamOne.wins}W - {teamOne.draws}D - {teamOne.losses}L
-            </Text>
-          </View>
+          <TeamInfo team={teamOne} />
           <View>
             <Text style={styles.dash}>-</Text>
           </View>
-          <View style={styles.teamView}>
-            <Image source={images[teamTwo.bigIconIndex]} />
-            <Text style={styles.teamTwoText}>
-              {teamTwo.wins}W - {teamTwo.draws}D - {teamTwo.losses}L
-            </Text>
-          </View>
+          <TeamInfo team={teamTwo} />
         </View>
-        <View style={styles.HomeViewTeamContainer}>
+        <View style={styles.HomeViewButtonContainer}>
           {!playoffs && (
             <TouchableOpacity
-              style={styles.watchButton}
+              style={styles.button}
               onPress={() => {
                 calcResults(teamOne, teamTwo),
                   calcPoints(),
-                  concludeMatch(),
-                  addMatchToHistory(
-                    teamOne,
-                    teamTwo,
-                    teamOne.recentOutcome == 0
-                      ? 0
-                      : teamOne.recentOutcome == 1
-                      ? 1
-                      : -1,
-                  ),
                   setModalVisible(!modalVisible);
               }}>
               <Text style={styles.buttonText}>Watch!</Text>
             </TouchableOpacity>
           )}
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

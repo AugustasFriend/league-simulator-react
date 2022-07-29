@@ -29,6 +29,14 @@ export const calcPoints = () => {
   }
 }
 
+export const loadPlayersToTeams = () => {
+  return {
+    type: actionTypes.LOAD_PLAYERS_TO_TEAMS,
+  }
+}
+
+
+
 // ---- Actions for scheduleReducer ---- //
 export const concludeMatch = () => {
   return {
@@ -46,5 +54,7 @@ export const addMatchToHistory = (teamOne, teamTwo, results) => {
     }
   }
 }
+
+
 
 // ---- Actions for playerReducer ---- //
