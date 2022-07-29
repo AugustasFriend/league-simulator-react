@@ -32,7 +32,7 @@ const Home = ({
 
   return (
     <SafeAreaView style={styles.background}>
-      <FillTeamsButton />
+      <FillTeamsButton/>
       <Modal
         animationType="slide"
         transparent={true}
@@ -42,10 +42,10 @@ const Home = ({
         }}>
         <View style={styles.transparentModal}>
           <View style={styles.modalView}>
-            <MatchResults />
+            <MatchResults teamOne={teamOne} teamTwo={teamTwo} />
             <View style={styles.backButtonView}>
               <TouchableOpacity
-                style={styles.watchButton}
+                style={styles.button}
                 onPress={() => {
                   setModalVisible(!modalVisible),
                     concludeMatch(),

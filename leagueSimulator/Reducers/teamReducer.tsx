@@ -5,6 +5,8 @@ import configureStore from '../Store/configureStore';
 
 const initialState = {
   teamsFilled: false,
+  teamOneScore: 0,
+  teamTwoScore: 0,
   teams: [
     {
       id: 1,
@@ -236,6 +238,8 @@ const teamReducer = (state = initialState, action) => {
       if (teamOneAdvantages > teamTwoAdvantages) {
         return {
           ...state,
+          teamOneScore: teamOneAdvantages,
+          teamTwoScore: teamTwoAdvantages,
           teams: state.teams.map(team =>
             team.id == action.payload.teamOne.id
               ? {...team, wins: team.wins + 1, recentOutcome: 1}
@@ -247,6 +251,8 @@ const teamReducer = (state = initialState, action) => {
       } else if (teamTwoAdvantages > teamOneAdvantages) {
         return {
           ...state,
+          teamOneScore: teamOneAdvantages,
+          teamTwoScore: teamTwoAdvantages,
           teams: state.teams.map(team =>
             team.id == action.payload.teamTwo.id
               ? {...team, wins: team.wins + 1, recentOutcome: 1}
@@ -258,6 +264,8 @@ const teamReducer = (state = initialState, action) => {
       } else {
         return {
           ...state,
+          teamOneScore: teamOneAdvantages,
+          teamTwoScore: teamTwoAdvantages,
           teams: state.teams.map(team =>
             team.id == action.payload.teamTwo.id
               ? {...team, draws: team.draws + 1, recentOutcome: 0}
