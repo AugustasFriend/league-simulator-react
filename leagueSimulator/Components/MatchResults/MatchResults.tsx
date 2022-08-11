@@ -2,20 +2,9 @@ import React, {useState} from 'react';
 import {View, Image, SafeAreaView, Text} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
+import Images from '../Misc/Images';
 
 const MatchResults = ({teamOneScore, teamTwoScore, teamOne, teamTwo}) => {
-  const images = [
-    require('../../Images/abersinnfv-logo.png'),
-    require('../../Images/dijleon-big-logo.png'),
-    require('../../Images/kveciai-logo.png'),
-    require('../../Images/sanvisenze-logo.png'),
-    require('../../Images/atleticoledilla-logo.png'),
-    require('../../Images/newfordcity-logo.png'),
-    require('../../Images/grezztalo-logo.png'),
-    require('../../Images/hunedatku-logo.png'),
-    require('../../Images/syktva-logo.png'),
-    require('../../Images/trikadona-logo.png'),
-  ];
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -23,7 +12,7 @@ const MatchResults = ({teamOneScore, teamTwoScore, teamOne, teamTwo}) => {
       <View style={styles.teamContainer}>
         <View style={styles.imageSize}>
           <Image
-            source={images[teamOne.bigIconIndex]}
+            source={Images[teamOne.bigIconIndex]}
             style={styles.imageAdjuster}
           />
         </View>
@@ -43,7 +32,7 @@ const MatchResults = ({teamOneScore, teamTwoScore, teamOne, teamTwo}) => {
       <View style={styles.teamContainer}>
         <View style={styles.imageSize}>
           <Image
-            source={images[teamTwo.bigIconIndex]}
+            source={Images[teamTwo.bigIconIndex]}
             style={styles.imageAdjuster}
           />
         </View>

@@ -5,11 +5,11 @@ import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
 import {concludeMatch} from '../../Actions/Actions';
 import {addMatchToHistory} from '../../Actions/Actions';
-import MatchResults from '../MatchResults/MatchResults';
 import FillTeamsButton from './FillTeamsButton';
 import RoundRobinFormat from './RoundRobinFormat';
 import styles from './styles';
-import TeamInfo from './TeamInfo';
+import WatchButton from './WatchButton';
+import BackButton from './BackButton';
 
 const Home = ({
   teams,
@@ -32,64 +32,24 @@ const Home = ({
 
   return (
     <SafeAreaView style={styles.background}>
-      <FillTeamsButton/>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          console.log('Modal has been closed');
-        }}>
-        <View style={styles.transparentModal}>
-          <View style={styles.modalView}>
-            <MatchResults teamOne={teamOne} teamTwo={teamTwo} />
-            <View style={styles.backButtonView}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => {
-                  setModalVisible(!modalVisible),
-                    concludeMatch(),
-                    addMatchToHistory(
-                      teamOne,
-                      teamTwo,
-                      teamOne.recentOutcome == 0
-                        ? 0
-                        : teamOne.recentOutcome == 1
-                        ? 1
-                        : -1,
-                    );
-                }}>
-                <Text style={styles.buttonText}>Back</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
-      <View style={styles.MainHomeContainer}>
-        <View style={styles.bigtext}>
-          <Text style={styles.bigtext}>Upcoming Match:</Text>
-        </View>
-        <View style={styles.HomeViewTeamContainer}>
-          <TeamInfo team={teamOne} />
-          <View>
-            <Text style={styles.dash}>-</Text>
-          </View>
-          <TeamInfo team={teamTwo} />
-        </View>
-        <View style={styles.HomeViewButtonContainer}>
-          {!playoffs && (
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => {
-                calcResults(teamOne, teamTwo),
-                  calcPoints(),
-                  setModalVisible(!modalVisible);
-              }}>
-              <Text style={styles.buttonText}>Watch!</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-      </View>
+      <FillTeamsButton />
+      <BackButton
+        modalVisible={modalVisible}
+        teamOne={teamOne}
+        teamTwo={teamTwo}
+        setModalVisible={setModalVisible}
+        concludeMatch={concludeMatch}
+        addMatchToHistory={addMatchToHistory}
+      />
+      <WatchButton
+        teamOne={teamOne}
+        teamTwo={teamTwo}
+        playoffs={playoffs}
+        calcResults={calcResults}
+        calcPoints={calcPoints}
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      />
     </SafeAreaView>
   );
 };
@@ -116,5 +76,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 /* FLEXDIRECTION FLEXBOT*/
-// tsc filename.tsx
-// <Text style={styles.dash}>-</Text>
+// tsc filename.tsx  // <Text style={styles.dash}>-</Text>

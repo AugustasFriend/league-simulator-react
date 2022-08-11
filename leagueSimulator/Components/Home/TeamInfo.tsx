@@ -2,24 +2,12 @@ import React, {useState} from 'react';
 import {Text, View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
-
-const images = [
-  require('../../Images/abersinnfv-logo.png'),
-  require('../../Images/dijleon-big-logo.png'),
-  require('../../Images/kveciai-logo.png'),
-  require('../../Images/sanvisenze-logo.png'),
-  require('../../Images/atleticoledilla-logo.png'),
-  require('../../Images/newfordcity-logo.png'),
-  require('../../Images/grezztalo-logo.png'),
-  require('../../Images/hunedatku-logo.png'),
-  require('../../Images/syktva-logo.png'),
-  require('../../Images/trikadona-logo.png'),
-];
+import Images from '../Misc/Images';
 
 const TeamInfo = ({team, teams}) => {
   return (
     <View style={styles.teamView}>
-      <Image source={images[team.bigIconIndex]} />
+      <Image source={Images[team.bigIconIndex]} />
       <Text style={styles.teamOneText}>
         {team.wins}
         <Text style={{color: 'green'}}>W</Text> - {team.draws}D - {team.losses}
@@ -38,7 +26,7 @@ const TeamInfo = ({team, teams}) => {
               <View style={styles.imageSize}>
                 <Image
                   source={
-                    images[
+                    Images[
                       teams.find(teamx => teamx.name == match[0]).bigIconIndex
                     ]
                   }
