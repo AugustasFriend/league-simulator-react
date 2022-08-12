@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, View, TouchableOpacity, Modal} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import {calcResults} from '../../Actions/Actions';
 import {calcPoints} from '../../Actions/Actions';
