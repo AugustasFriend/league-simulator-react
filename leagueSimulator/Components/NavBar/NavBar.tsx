@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Image,
-} from 'react-native';
+import {Image} from 'react-native';
 import LeagueStandings from '../LeagueStandings/LeagueStandings';
 import Home from '../Home/Home';
 import Schedule from '../Schedule/Schedule';
