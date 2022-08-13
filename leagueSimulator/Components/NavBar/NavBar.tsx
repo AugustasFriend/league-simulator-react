@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from 'react-native';
-import LeagueStandings from '../LeagueStandings/LeagueStandings';
+import Standings from '../LeagueStandings/Standings';
 import Home from '../Home/Home';
 import Schedule from '../Schedule/Schedule';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
@@ -32,7 +32,7 @@ const NavBar = () => {
       />
       <Tab.Screen
         name="Standings"
-        component={LeagueStandings}
+        component={Standings}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({}) => (

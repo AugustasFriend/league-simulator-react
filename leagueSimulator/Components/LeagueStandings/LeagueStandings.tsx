@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {ScrollView, Text, View, Image} from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
 import Images from '../Misc/Images';
@@ -21,17 +14,9 @@ function compare(teamA: {points: number}, teamB: {points: number}) {
   return 0;
 }
 
-const LeagueStandings = ({teams}) => {
-  return (
-    <SafeAreaView style={styles.background}>
-      <View style={styles.titleContainer}>
-        <TouchableOpacity style={styles.LeagueTextContainer}>
-          <Text style={styles.titleText}>League</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.BracketTextContainer}>
-          <Text style={styles.titleText}>Final Bracket</Text>
-        </TouchableOpacity>
-      </View>
+const LeagueStandings = ({teams, bool}) => {
+  if (bool) {
+    return (
       <ScrollView style={styles.scrollView}>
         {teams.sort(compare).map((team, index) => (
           <View>
@@ -54,8 +39,9 @@ const LeagueStandings = ({teams}) => {
           </View>
         ))}
       </ScrollView>
-    </SafeAreaView>
-  );
+    );
+  }
+  return null;
 };
 
 const mapStateToProps = state => {

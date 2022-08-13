@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginTop: '2%',
+    backgroundColor: '#433F3F',
+    flex: 1,
   },
   numberText:{
     fontSize: 25,
