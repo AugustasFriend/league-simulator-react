@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {Text, View, TouchableOpacity, SafeAreaView} from 'react-native';
 import LeagueStandings from './LeagueStandings';
-import BracketStandings from '../BracketStandings/BracketStandings';
+import BracketStandings from './BracketStandings/BracketStandings';
 import styles from './styles';
+import {connect} from 'react-redux';
 
-const Standings = () => {
+const Standings = ({teams}) => {
   const [isLeague, setIsLeague] = useState(true);
 
   return (
@@ -25,10 +26,20 @@ const Standings = () => {
           <Text style={styles.titleText}>Final Bracket</Text>
         </TouchableOpacity>
       </View>
-      <LeagueStandings bool={isLeague} />
-      <BracketStandings bool={isLeague} />
+      <LeagueStandings teams={teams} bool={isLeague} />
+      <BracketStandings bool={isLeague} teams={teams} />
     </SafeAreaView>
   );
 };
 
-export default Standings;
+const mapStateToProps = state => {
+  return {
+    teams: state.teamReducer.teams,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Standings);

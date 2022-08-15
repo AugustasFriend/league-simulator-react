@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, Text, View, Image} from 'react-native';
 import styles from './styles';
-import {connect} from 'react-redux';
 import Images from '../Misc/Images';
 
 function compare(teamA: {points: number}, teamB: {points: number}) {
@@ -44,17 +43,4 @@ const LeagueStandings = ({teams, bool}) => {
   return null;
 };
 
-const mapStateToProps = state => {
-  return {
-    wins: state.teamReducer.wins,
-    teams: state.teamReducer.teams,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addVictory: () => dispatch(addVictory()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LeagueStandings);
+export default LeagueStandings
